@@ -1,0 +1,120 @@
+{
+    "Exponents": [
+        {
+            "title": "Properties of Exponents",
+            "file": "exponents/Exponents-Properties.pdf"
+        }
+    ],
+    "Functions": [
+        {
+            "title": "Domain of a Function simplified",
+            "file": "functions/Domain-of-function-simplified.pdf"
+        },
+        {
+            "title": "Inverse Functions simplified",
+            "file": "functions/Functions-Inverse-Simplified.pdf"
+        },
+        {
+            "title": "Reciprocal Transformations",
+            "file": "functions/Functions-Transformations-Reciprocal.pdf"
+        },
+        {
+            "title": "Reflections Transformations",
+            "file": "functions/Functions-Transformations-Reflections.pdf"
+        }
+    ],
+    "Rational Functions": [
+        {
+            "title": "Asymptotes & Limits of Rational Functions",
+            "file": "rational_functions/Asymptotes-and-Limits-of-Rational-Functions.pdf"
+        }
+    ],
+    "Quadratic Functions": [
+        {
+            "title": "Quadratic Functions shifting vertically and horizontally",
+            "file": "quadratic_functions/Quadratic-Functions-Shifting-Vertically-and-Horizontally.pdf"
+        },
+        {
+            "title": "Quadratic Function: three forms simplified",
+            "file": "quadratic_functions/Quadratic-Function-3Forms-simplified.pdf"
+        },
+        {
+            "title": "Quadratic Function: three forms & four statements",
+            "file": "quadratic_functions/Quadratic-Function-3Forms-4Statements.pdf"
+        }
+    ],
+    "Integration": [
+        {
+            "title": "Integration by Parts: ILATE & Tabular",
+            "file": "integration/Integration-by-Parts-ILATE-and-Tabular.pdf"
+        }
+    ],
+    "Polynomials": [
+        {
+            "title": "Polynomials",
+            "file": "polynomials/Polynomials.pdf"
+        }
+    ],
+    "Derivatives": [
+        {
+            "title": "Derivatives: f(x) Graph from f’(x) Graph",
+            "file": "derivatives/Derivatives-f'(x)-graph-from-f(x)-graph.pdf"
+        },
+        {
+            "title": "Derivatives: Max-Min, Inflexion points, Finding locations",
+            "file": "derivatives/Derivatives-Max-Min-Inflexion-pts-Finding-Locations.pdf"
+        },
+        {
+            "title": "Finding locations for SL",
+            "file": "derivatives/Derivatives-Max-Min-Inflexion-pts-Finding-Locations-for-SL.pdf"
+        }
+    ],
+    "Vectors": [
+        {
+            "title": "Vectors (parallel & perpendicular) simplified",
+            "file": "vectors/Vectors-Parallel-and-Perpendicular-Simplified.pdf"
+        },
+        {
+            "title": "Vector Eqn of a Plane",
+            "file": "vectors/Vector-Eqn-of-Plane.pdf"
+        },
+        {
+            "title": "Vector Eqn of a Line in 3D",
+            "file": "vectors/Vector-Eqn-of-Line-in-3D.pdf"
+        }
+    ],
+    "Trigonometry": [
+        {
+            "title": "Trig Functions of the Special Angles",
+            "file": "trigonometry/Trig-Functions-of-Special-Angles.pdf"
+        },
+        {
+            "title": "Trig facts for SL",
+            "file": "trigonometry/Trig-Facts-for-SL.pdf"
+        },
+        {
+            "title": "Trig facts for HL",
+            "file": "trigonometry/Trig-Facts-for-HL.pdf"
+        }
+    ],
+    "Logarithms": [
+        {
+            "title": "Logarithms: Properties for SL",
+            "file": "logarithms/Logarithms-Properties-for-SL.pdf"
+        }
+    ],
+    "General": [
+        {
+            "title": "Euler’s Method using the TI-84",
+            "file": "general/Euler-TI-84.pdf"
+        },
+        {
+            "title": "Last-minute IB Maths Exam Advice",
+            "file": "general/Last-Minute-IB-Maths-Exam-Advice.pdf"
+        },
+        {
+            "title": "Vocabulary for Math",
+            "file": "general/Vocabulary-for-Math.pdf"
+        }
+    ]
+}
