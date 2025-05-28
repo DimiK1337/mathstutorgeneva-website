@@ -52,7 +52,6 @@ export default function SATMath() {
                         <strong>Calculator allowed:</strong> 55 minutes, 38 questions
                     </li>
                 </ul>
-                <strong className="text-red-500">TODO: CHECK WITH DR. LARSON ABOUT THIS</strong>
                 <p>
                     The questions are a mix of multiple choice and "grid-ins", where students write their answer in boxes. Scoring is based on correct answers only — no penalty for guessing.
                 </p>
