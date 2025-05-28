@@ -2,14 +2,10 @@
     "Exponents": [
         {
             "title": "Properties of Exponents",
-            "file": "exponents/Exponents-Properties.pdf"
+            "file": "exponents/Exponents-Properties-of.pdf"
         }
     ],
     "Functions": [
-        {
-            "title": "Domain of a Function simplified",
-            "file": "functions/Domain-of-function-simplified.pdf"
-        },
         {
             "title": "Inverse Functions simplified",
             "file": "functions/Functions-Inverse-Simplified.pdf"
@@ -17,30 +13,22 @@
         {
             "title": "Reciprocal Transformations",
             "file": "functions/Functions-Transformations-Reciprocal.pdf"
-        },
-        {
-            "title": "Reflections Transformations",
-            "file": "functions/Functions-Transformations-Reflections.pdf"
         }
     ],
     "Rational Functions": [
         {
             "title": "Asymptotes & Limits of Rational Functions",
-            "file": "rational_functions/Asymptotes-and-Limits-of-Rational-Functions.pdf"
+            "file": "rational_functions/Functions-Asymptotes-and-Limits-of-Rational-Functions.pdf"
+        },
+        {
+            "title": "Asymptotes of Rational Functions and Logs for SL",
+            "file": "rational_functions/Functions-Asymptotes-of-Rational-Functions-and-Logs-for-SL.pdf"
         }
     ],
     "Quadratic Functions": [
         {
             "title": "Quadratic Functions shifting vertically and horizontally",
-            "file": "quadratic_functions/Quadratic-Functions-Shifting-Vertically-and-Horizontally.pdf"
-        },
-        {
-            "title": "Quadratic Function: three forms simplified",
-            "file": "quadratic_functions/Quadratic-Function-3Forms-simplified.pdf"
-        },
-        {
-            "title": "Quadratic Function: three forms & four statements",
-            "file": "quadratic_functions/Quadratic-Function-3Forms-4Statements.pdf"
+            "file": "quadratic_functions/Quadratic-Functions-Shifting-Vertically-&-Horizontally.pdf"
         }
     ],
     "Integration": [
@@ -58,55 +46,61 @@
     "Derivatives": [
         {
             "title": "Derivatives: f(x) Graph from f’(x) Graph",
-            "file": "derivatives/Derivatives-f'(x)-graph-from-f(x)-graph.pdf"
+            "file": "derivatives/derivatives-f'(x)-graph-from-f(x)-graph.pdf"
         },
         {
-            "title": "Derivatives: Max-Min, Inflexion points, Finding locations",
-            "file": "derivatives/Derivatives-Max-Min-Inflexion-pts-Finding-Locations.pdf"
+            "title": "Derivatives: Max-Min, Inflexion pts, AA HL",
+            "file": "derivatives/Derivatives-Max-Min-Inflexion-pts-Finding-the-Locations-of-for-AA-HL.pdf"
         },
         {
-            "title": "Finding locations for SL",
-            "file": "derivatives/Derivatives-Max-Min-Inflexion-pts-Finding-Locations-for-SL.pdf"
+            "title": "Derivatives: Max-Min, Inflexion pts, AA SL",
+            "file": "derivatives/Derivatives-Max-Min-Inflexion-pts-Finding-the-Locations-of-for-AA-SL.pdf"
+        },
+        {
+            "title": "Derivatives: Max-Min, Inflexion pts, AI HL",
+            "file": "derivatives/Derivatives-Max-Min-Inflexion-pts-Finding-the-Locations-of-for-AI-HL.pdf"
         }
     ],
     "Vectors": [
         {
-            "title": "Vectors (parallel & perpendicular) simplified",
-            "file": "vectors/Vectors-Parallel-and-Perpendicular-Simplified.pdf"
-        },
-        {
-            "title": "Vector Eqn of a Plane",
-            "file": "vectors/Vector-Eqn-of-Plane.pdf"
+            "title": "Vector Eqn of a Line in 3D (AI HL)",
+            "file": "vectors/Vector-Eqn-of-a-Line-in-3D-AI-HL.pdf"
         },
         {
             "title": "Vector Eqn of a Line in 3D",
-            "file": "vectors/Vector-Eqn-of-Line-in-3D.pdf"
+            "file": "vectors/Vector-Eqn-of-a-Line-in-3D.pdf"
+        },
+        {
+            "title": "Vector Eqn of a Plane",
+            "file": "vectors/Vector-Eqn-of-a-Plane.pdf"
+        },
+        {
+            "title": "Vectors (parallel & perpendicular) simplified",
+            "file": "vectors/Vectors-Parallel-and-Perpendicular.pdf"
         }
     ],
     "Trigonometry": [
         {
-            "title": "Trig Functions of the Special Angles",
-            "file": "trigonometry/Trig-Functions-of-Special-Angles.pdf"
-        },
-        {
             "title": "Trig facts for SL",
-            "file": "trigonometry/Trig-Facts-for-SL.pdf"
+            "file": "trigonometry/Trig-facts-for-SL.pdf"
         },
         {
-            "title": "Trig facts for HL",
-            "file": "trigonometry/Trig-Facts-for-HL.pdf"
-        }
-    ],
-    "Logarithms": [
+            "title": "Trig Facts (General)",
+            "file": "trigonometry/Trig-Facts.pdf"
+        },
         {
-            "title": "Logarithms: Properties for SL",
-            "file": "logarithms/Logarithms-Properties-for-SL.pdf"
+            "title": "Trig Functions of the Special Angles",
+            "file": "trigonometry/Trig-Functions-of-the-Special-Angles.pdf"
+        },
+        {
+            "title": "Unit Circle (Radial PNG)",
+            "file": "trigonometry/Trig-Unit-Circle-radially.png"
         }
     ],
     "General": [
         {
-            "title": "Euler’s Method using the TI-84",
-            "file": "general/Euler-TI-84.pdf"
+            "title": "Formulas Not in the IB Formula Booklets",
+            "file": "general/Formulas-Not-in-the-IB-Formula-Booklets.pdf"
         },
         {
             "title": "Last-minute IB Maths Exam Advice",
