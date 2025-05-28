@@ -24,7 +24,7 @@ export default function TI84CalculatorDocs() {
                 <p>
                     Read this to find out which calculators you can take into the IB exam:{" "}
                     <a
-                        href="https://www.ibo.org/globalassets/programme-information/dp/ib-calculator-policy-en.pdf"
+                        href="https://www.ibo.org/contentassets/e3e2d5a7b79e48f7a47f8973e7873a10/use-of-calculators-in-examinations-2019_en.pdf"
                         target="_blank"
                         rel="noopener noreferrer"
                         className="text-blue-600 dark:text-blue-300 underline"
