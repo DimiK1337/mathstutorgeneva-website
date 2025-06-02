@@ -85,7 +85,7 @@ export default function SATMath() {
                 <h2 className="text-2xl font-semibold mb-6 text-blue-700 dark:text-blue-400 text-center">
                     SAT Math Books I Use
                 </h2>
-                <div className="grid grid-cols-2 md:grid-cols-3 gap-4 place-items-center">
+                <div className="grid grid-cols-2 md:grid-cols-3 gap-4 place-items-center items-baseline">
                     {books.map(({ src, caption, order_url }) => (
                         <div key={src} className="text-center space-y-2">
                             <a href={order_url} target="_blank" rel="noopener noreferrer">
