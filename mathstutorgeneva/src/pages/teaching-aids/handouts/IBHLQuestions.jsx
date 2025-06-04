@@ -3,7 +3,7 @@ import React from "react";
 import { FaRegFilePdf } from "react-icons/fa";
 
 // Components
-import TeachingAidsBtn from "../../components/TeachingAidsBtn";
+import TeachingAidsBtn from "../../../components/TeachingAidsBtn";
 
 export default function IBHLQuestions() {
     const pdfs = [

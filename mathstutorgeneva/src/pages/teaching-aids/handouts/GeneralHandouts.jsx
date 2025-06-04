@@ -5,7 +5,7 @@ import { FaRegFilePdf } from "react-icons/fa"; // https://react-icons.github.io/
 
 
 // Components
-import TeachingAidsBtn from "../../components/TeachingAidsBtn";
+import TeachingAidsBtn from "../../../components/TeachingAidsBtn";
 
 export default function GeneralHandouts() {
     return (
