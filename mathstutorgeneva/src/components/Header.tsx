@@ -14,13 +14,13 @@ interface NavItem {
 
 const navigation: NavItem[] = [
 	{ name: "Home", href: "/" },
-	{ name: "About Dr Larson", href: "/about" },
+	{ name: "About Dr Larson", href: "/about-dr-larson-maths-tutor" },
 	{ name: "How I Tutor", href: "/how-i-tutor" },
 	{ name: "SAT Math", href: "/sat-math" },
 	{ name: "Testimonials", href: "/testimonials" },
 	{ name: "Tutoring Fees", href: "/fees" },
-	{ name: "Location", href: "/location" },
-	{ name: "Contact", href: "/contact" },
+	{ name: "Location", href: "/how-to-get-to-the-larsons-in-nyon" },
+	{ name: "Contact", href: "/contact-dr-larson" },
 ];
 
 function classNames(...classes: (string)[]): string {
