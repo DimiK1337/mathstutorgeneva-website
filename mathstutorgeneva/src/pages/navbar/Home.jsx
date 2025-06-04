@@ -7,7 +7,7 @@ export default function Home() {
                     Dr. W. J. Larson, Private Math Tutor
                 </h1>
                 <p className="mt-4 text-lg md:text-xl text-gray-700 dark:text-gray-300">
-                    Formerly of <a className="text-blue-700 underline dark:text-blue-400" href="https://home.cern/about">CERN</a> and the <a className="text-blue-700 underline dark:text-blue-400" href="https://www.ecolint.ch/our-campuses/la-grande-boissiere">Ecole Internationale in Geneva</a>. Teaching IB, SAT, AP, and university-level math with clarity and passion.
+                    Formerly of <a className="text-blue-700 underline dark:text-blue-400" href="https://home.cern/about">CERN</a> and the <a className="text-blue-700 underline dark:text-blue-400" href="https://www.ecolint.ch/en/la-grande-boissiere">Ecole Internationale in Geneva</a>. Teaching IB, SAT, AP, and university-level math with clarity and passion.
                 </p>
             </section>
 
@@ -116,12 +116,17 @@ export default function Home() {
             <section className="text-center py-6" id="teaching-aids">
                 <h2 className="text-xl font-semibold text-blue-800 dark:text-blue-300 mb-2">Free Teaching Aids</h2>
                 <nav className="flex flex-wrap justify-center gap-4 text-sm font-medium text-blue-700 dark:text-blue-300">
-                    <a href="/maths-jokes">Maths Ten Commandments</a>
-                    <a href="/handouts">General Handouts</a>
-                    <a href="/handouts/ib-hl-questions">IB HL Questions</a>
-                    <a href="/handouts/ib-sl-questions">IB SL Questions</a>
-                    <a href="/ti-84-calculator-docs">TI-84 Calculator Guides</a>
-                    <a href="https://tutorial.math.lamar.edu/Extras/CommonErrors/AlgebraErrors.aspx" target="_blank" rel="noreferrer">
+                    <a href="/maths-jokes" className="hover:underline">Maths Ten Commandments</a>
+                    <a href="/handouts" className="hover:underline">General Handouts</a>
+                    <a href="/handouts/ib-hl-questions" className="hover:underline">IB HL Questions</a>
+                    <a href="/handouts/ib-sl-questions" className="hover:underline">IB SL Questions</a>
+                    <a href="/ti-84-calculator-docs" className="hover:underline">TI-84 Calculator Guides</a>
+                    <a 
+                        href="https://tutorial.math.lamar.edu/Extras/CommonErrors/AlgebraErrors.aspx" 
+                        target="_blank" 
+                        rel="noreferrer"
+                        className="hover:underline"
+                    >
                         Common Math Errors to Avoid
                     </a>
                 </nav>
