@@ -33,8 +33,12 @@
     ],
     "Integration": [
         {
-            "title": "Integration by Parts: ILATE & Tabular",
-            "file": "integration/Integration-by-Parts-ILATE-and-Tabular.pdf"
+            "title": "Integration by Parts: LIPET & Tabular",
+            "file": "integration/Integration-by-Parts-LIPET&Tabular.pdf"
+        },
+        {
+            "title": "Integration Tricks",
+            "file": "integration/Integration-Tricks.pdf"
         }
     ],
     "Polynomials": [
@@ -95,6 +99,12 @@
         {
             "title": "Unit Circle (Radial PNG)",
             "file": "trigonometry/Trig-Unit-Circle-radially.png"
+        }
+    ],
+    "Logarithms": [
+        {
+            "title": "Properties of Logarithms",
+            "file": "logarithms/Logarithms-Properties.pdf"
         }
     ],
     "General": [
