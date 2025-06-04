@@ -1,5 +1,8 @@
 import React from "react";
 
+// Components
+import TeachingAidsBtn from "../../components/TeachingAidsBtn";
+
 const commandments = [
     "Thou shalt read Thy problem.",
     "Whatsoever Thou doest to one side of the equation, Do Thee also to the other.",
@@ -35,6 +38,8 @@ export default function MathsCommandments() {
                     </div>
                 ))}
             </section>
+
+            <TeachingAidsBtn />
         </div>
     );
 }

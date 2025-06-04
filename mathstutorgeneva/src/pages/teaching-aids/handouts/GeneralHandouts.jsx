@@ -1,7 +1,11 @@
-import React from "react";
-import { Link } from "react-router-dom";
-import { FaRegFilePdf } from "react-icons/fa"; // https://react-icons.github.io/react-icons/icons?name=fa
 import handouts from "../../../data/generalHandouts.json"
+
+import React from "react";
+import { FaRegFilePdf } from "react-icons/fa"; // https://react-icons.github.io/react-icons/icons?name=fa
+
+
+// Components
+import TeachingAidsBtn from "../../components/TeachingAidsBtn";
 
 export default function GeneralHandouts() {
     return (
@@ -41,15 +45,9 @@ export default function GeneralHandouts() {
                     </div>
                 </div>
             ))}
-
-            <div className="pt-8">
-                <Link
-                    to="/#teaching-aids"
-                    className="inline-block bg-orange-600 text-white px-5 py-3 rounded hover:bg-orange-700 transition text-sm font-medium"
-                >
-                    Back to Teaching Aids
-                </Link>
-            </div>
+            
+            {/* Teaching Aids Link */}
+            <TeachingAidsBtn />
         </div>
     );
 }

@@ -1,6 +1,9 @@
 import React from "react";
-import { Link } from "react-router-dom";
+
 import { FaRegFilePdf } from "react-icons/fa";
+
+// Components
+import TeachingAidsBtn from "../../components/TeachingAidsBtn";
 
 export default function IBSLQuestions() {
     const pdfs = [
@@ -49,14 +52,8 @@ export default function IBSLQuestions() {
                 ))}
             </ul>
 
-            <div className="pt-8">
-                <Link
-                    to="/#teaching-aids"
-                    className="inline-block bg-orange-600 text-white px-5 py-3 rounded hover:bg-orange-700 transition text-sm font-medium"
-                >
-                    Back to teaching materials
-                </Link>
-            </div>
+            {/* Teaching Aids Link */}
+            <TeachingAidsBtn />
         </div>
     );
 }
