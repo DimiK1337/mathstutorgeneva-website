@@ -1,0 +1,9 @@
+# *
+User-agent: *
+Allow: /
+
+# Host
+Host: https://mathstutorgeneva.ch
+
+# Sitemaps
+Sitemap: https://mathstutorgeneva.ch/sitemap.xml
