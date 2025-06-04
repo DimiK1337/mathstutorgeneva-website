@@ -113,7 +113,7 @@ export default function Home() {
             </section>
 
             {/* Free Teaching Aids */}
-            <section className="text-center py-6" id="teaching-aids">
+            <section className="text-center py-6" id="TeachingAids">
                 <h2 className="text-xl font-semibold text-blue-800 dark:text-blue-300 mb-2">Free Teaching Aids</h2>
                 <nav className="flex flex-wrap justify-center gap-4 text-sm font-medium text-blue-700 dark:text-blue-300">
                     <a href="/maths-jokes" className="hover:underline">Maths Ten Commandments</a>
