@@ -15,13 +15,13 @@ import Testimonials from "./pages/navbar/Testimonials";
 import Location from "./pages/navbar/Location";
 import Contact from "./pages/navbar/Contact";
 
-// Misc pages
+// Teaching Aid pages
 
-import MathsJokes from "./pages/misc/MathJokes";
-import GeneralHandouts from "./pages/misc/handouts/GeneralHandouts";
-import TI84CalculatorDocs from "./pages/misc/TI84CalculatorDocs";
-import IBSLQuestions from "./pages/misc/handouts/IBSLQuestions";
-import IBHLQuestions from "./pages/misc/handouts/IBHLQuestions";
+import MathsJokes from "./pages/teaching-aids/MathJokes";
+import GeneralHandouts from "./pages/teaching-aids/handouts/GeneralHandouts";
+import TI84CalculatorDocs from "./pages/teaching-aids/TI84CalculatorDocs";
+import IBSLQuestions from "./pages/teaching-aids/handouts/IBSLQuestions";
+import IBHLQuestions from "./pages/teaching-aids/handouts/IBHLQuestions";
 
 
 // Add more pages as needed
