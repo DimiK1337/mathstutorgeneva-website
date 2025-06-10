@@ -1,5 +1,6 @@
 /** @type {import('next-sitemap').IConfig} */
 module.exports = {
+    sourceDir: './dist', // Path to your public directory
     siteUrl: 'https://mathstutorgeneva.ch',
     generateRobotsTxt: true, // 👈 this will also generate robots.txt
     changefreq: 'monthly',
