@@ -22,6 +22,7 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: "Dr. W. J. Larson – Math Tutor in Geneva",
   description: "Private math tutoring for IB, IGCSE, SAT, and more – from an experienced educator in Geneva.",
+  robots: "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1",
 };
 
 export default function RootLayout({
