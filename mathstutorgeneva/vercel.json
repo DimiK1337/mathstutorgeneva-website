@@ -1,0 +1,9 @@
+{
+    "buildCommand": "npm run build",
+    "outputDirectory": ".next",
+    "framework": "nextjs",
+    "rewrites": [],
+    "redirects": [],
+    "cleanUrls": true,
+    "trailingSlash": true
+}
