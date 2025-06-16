@@ -1,38 +1,22 @@
 import React from "react";
-
-import { getBaseUrl } from "@/lib/getBaseUrl";
-
 import { FaRegFilePdf } from "react-icons/fa";
+
+// lib
+import { getBaseUrl } from "@/lib/getBaseUrl";
+import { buildMetadata } from "@/lib/metadataBuilder";
 
 // Components
 import TeachingAidsBtn from "@/components/TeachingAidsBtn";
 
 import type { Metadata } from "next";
-
-export const metadata: Metadata = {
+export const metadata: Metadata = buildMetadata({
     title: "IB SL questions",
     description:
         "IB SL Questions – SL Vectors, Trig Identities, Sequences, and Normal Distribution (2008–2014), with full mark schemes.",
-    metadataBase: new URL("https://mathstutorgeneva.ch"),
-    alternates: {
-        canonical: "/handouts/ib-sl-questions",
-    },
-    openGraph: {
-        title: "IB SL questions",
-        description:
-            "IB SL Questions – SL Vectors, Trig Identities, Sequences, and Normal Distribution (2008–2014), with full mark schemes.",
-        url: "/handouts/ib-sl-questions",
-        siteName: "mathstutorgeneva.ch",
-        type: "article",
-        locale: "en_US",
-    },
-    twitter: {
-        card: "summary_large_image",
-        title: "IB SL questions",
-        description:
-            "SL Vectors, Trig Identities, Sequences, and Normal Distribution from 2008–2014. All with mark schemes.",
-    },
-};
+    slug: "/handouts/ib-sl-questions",
+    keywords: ["math tutor", "Geneva", "Nyon", "IB", "SAT", "handouts", "SL", "Dr Larson"],
+    images: [],
+});
 
 function createJsonLdGraph(baseUrl: string) {
     const webPageJsonLd = {

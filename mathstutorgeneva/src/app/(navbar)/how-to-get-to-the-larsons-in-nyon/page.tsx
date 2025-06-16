@@ -1,47 +1,30 @@
 import React from "react";
-import type { Metadata } from "next";
-import { getBaseUrl } from "@/lib/getBaseUrl";
-
 import Image from "next/image";
 
-export const metadata: Metadata = {
-    metadataBase: new URL("https://mathstutorgeneva.ch"),
+// lib
+import { getBaseUrl } from "@/lib/getBaseUrl";
+import { buildMetadata } from "@/lib/metadataBuilder";
+
+import type { Metadata } from "next";
+export const metadata: Metadata = buildMetadata({
     title: "How to get to the Larsons’ in Nyon",
     description: "How to get to the Larsons' in Nyon",
-    alternates: {
-        canonical: "/how-to-get-to-the-larsons-in-nyon",
-    },
-    openGraph: {
-        title: "How to get to the Larsons’ in Nyon",
-        description: "How to get to the Larsons' in Nyon",
-        url: "/how-to-get-to-the-larsons-in-nyon",
-        siteName: "mathstutorgeneva.ch",
-        type: "article",
-        images: [
-            {
-                url: "/images/location/bill-directions-to-plantaz1-365x400.png",
-                width: 365,
-                height: 400,
-                alt: "Walking map to Chemin des Plantaz",
-            },
-            {
-                url: "/images/location/bill-directions-large-map-400x373.png",
-                width: 400,
-                height: 373,
-                alt: "Large map showing full route",
-            },
-        ],
-    },
-    twitter: {
-        card: "summary_large_image",
-        title: "How to get to the Larsons’ in Nyon",
-        description: "How to get to the Larsons' in Nyon",
-        images: [
-            "/images/location/bill-directions-to-plantaz1-365x400.png",
-            "/images/location/bill-directions-large-map-400x373.png",
-        ],
-    },
-};
+    slug: "/how-to-get-to-the-larsons-in-nyon",
+    images: [
+        {
+            path: "/images/location/bill-directions-to-plantaz1-365x400.png",
+            width: 365,
+            height: 400,
+            alt: "Walking map to Chemin des Plantaz",
+        },
+        {
+            path: "/images/location/bill-directions-large-map-400x373.png",
+            width: 400,
+            height: 373,
+            alt: "Large map showing full route",
+        },
+    ],
+});
 
 // ld+json
 function createJsonLdGraph(baseUrl: string) {

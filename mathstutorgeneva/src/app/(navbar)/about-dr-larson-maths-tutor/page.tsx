@@ -2,32 +2,19 @@ import React from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 
+// lib
 import { getBaseUrl } from "@/lib/getBaseUrl";
+import { buildMetadata } from "@/lib/metadataBuilder";
 
-// TODO: Metadata
 import type { Metadata } from 'next';
-
-export const metadata: Metadata = {
+export const metadata: Metadata = buildMetadata({
     title: "About Dr Larson, private math tutor in Geneva and Nyon.",
     description:
         "For many years Dr Larson taught maths for the IB Diploma Program, IGCSE and US high school syllabuses (grades 7 to 13) at the Ecole Internationale in Geneva.",
-    metadataBase: new URL("https://mathstutorgeneva.ch"),
-    alternates: {
-        canonical: "/about-dr-larson-maths-tutor",
-    },
-    openGraph: {
-        title: "About Dr Larson, private math tutor in Geneva and Nyon.",
-        description:
-            "For many years Dr Larson taught maths for the IB Diploma Program, IGCSE and US high school syllabuses (grades 7 to 13) at the Ecole Internationale in Geneva.",
-        url: "https://mathstutorgeneva.ch/about/",
-        siteName: "mathstutorgeneva.ch",
-        type: "article",
-        locale: "en_US",
-    },
-    twitter: {
-        card: "summary_large_image",
-    },
-};
+    slug: "/about-dr-larson-maths-tutor",
+    keywords: ["math tutor", "Geneva", "Nyon", "IB", "SAT", "Dr Larson"],
+    images: []
+});
 
 // ld+json
 function createJsonLdGraph(baseUrl: string) {

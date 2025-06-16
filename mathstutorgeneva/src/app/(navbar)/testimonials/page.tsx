@@ -1,44 +1,33 @@
 import rawData from '@/data/testimonials.json';
-import { getBaseUrl } from '@/lib/getBaseUrl';
-import type { Metadata } from 'next';
 
-interface SingleTestimonial {
+// lib
+import { getBaseUrl } from '@/lib/getBaseUrl';
+import { buildMetadata } from '@/lib/metadataBuilder';
+
+import type { Metadata } from 'next';
+export const metadata: Metadata = buildMetadata({
+    title: 'Testimonials',
+    description: 'Testimonials from satisfied parents and students',
+    slug: '/testimonials',
+    keywords: ['math tutor', 'Geneva', 'Nyon', 'testimonials', 'parent feedback'],
+});
+
+// Types to represent the structure of testimonials data from the JSON file
+type SingleTestimonial = {
     testimonial: string;
     name: string;
 }
 
-interface YearTestimonials {
+type YearTestimonials = {
     intro?: string;
     testimonials: SingleTestimonial[];
 }
 
-interface TestimonialsJSON {
+type TestimonialsJSON = {
     _order: string[];
     [year: string]: YearTestimonials | string[]; // safer to keep if years may not be strictly typed
 }
 
-export const metadata: Metadata = {
-    title: 'Testimonials',
-    description: 'Testimonials from satisfied parents and students',
-    keywords: ['math tutor', 'Geneva', 'Nyon', 'testimonials', 'parent feedback'],
-    metadataBase: new URL('https://mathstutorgeneva.ch'),
-    alternates: {
-        canonical: '/testimonials',
-    },
-    openGraph: {
-        type: 'article',
-        locale: 'en_US',
-        url: 'https://mathstutorgeneva.ch/testimonials',
-        siteName: 'mathstutorgeneva.ch',
-        title: 'Testimonials',
-        description: 'Testimonials from satisfied parents and students',
-    },
-    twitter: {
-        card: 'summary_large_image',
-        title: 'Testimonials',
-        description: 'Testimonials from satisfied parents and students',
-    },
-};
 
 // ld+json
 function createJsonLdGraph(baseUrl: string) {

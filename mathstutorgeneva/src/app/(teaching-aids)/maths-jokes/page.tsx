@@ -1,32 +1,20 @@
 import React from "react";
+
+// lib
 import { getBaseUrl } from "@/lib/getBaseUrl";
+import { buildMetadata } from "@/lib/metadataBuilder";
 
 // Components
 import TeachingAidsBtn from "@/components/TeachingAidsBtn";
 
 import type { Metadata } from "next";
-export const metadata: Metadata = {
-    metadataBase: new URL("https://mathstutorgeneva.ch"),
+export const metadata: Metadata = buildMetadata({
     title: "Ten commandments of Mathematics",
     description: "Dr Larson's Ten Commandments for learning maths",
-    alternates: {
-        canonical: "/maths-jokes",
-    },
-    openGraph: {
-        title: "Ten commandments of Mathematics",
-        description: "Dr Larson's Ten Commandments for learning maths",
-        url: "/maths-jokes",
-        siteName: "mathstutorgeneva.ch",
-        type: "article",
-        locale: "en_US",
-    },
-    twitter: {
-        card: "summary_large_image",
-        title: "Ten commandments of Mathematics",
-        description: "Dr Larson's Ten Commandments for learning maths",
-    },
-    robots: "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1",
-};
+    slug: "/maths-jokes",
+    keywords: ["math tutor", "Geneva", "Nyon", "IB", "SAT", "jokes", "Dr Larson"],
+    images: [],
+});
 
 function createJsonLdGraph(baseUrl: string) {
     const webPageJsonLd = {

@@ -1,40 +1,25 @@
 import React from "react";
-import { getBaseUrl } from "@/lib/getBaseUrl";
 import Image from "next/image";
 
-import type { Metadata } from "next";
+// lib
+import { getBaseUrl } from "@/lib/getBaseUrl";
+import { buildMetadata } from "@/lib/metadataBuilder";
 
-export const metadata: Metadata = {
+import type { Metadata } from "next";
+export const metadata: Metadata = buildMetadata({
     title: "Tutoring fees",
     description: "Flexible fees for private maths tuition",
+    slug: "/fees",
     keywords: ["math tutor", "Geneva", "Nyon", "IB", "SAT", "fees", "Dr Larson"],
-    metadataBase: new URL("https://mathstutorgeneva.ch"),
-    alternates: {
-        canonical: "/fees",
-    },
-    openGraph: {
-        type: "article",
-        locale: "en_US",
-        url: "https://mathstutorgeneva.ch/fees",
-        title: "Tutoring fees",
-        description: "Flexible fees for private maths tuition",
-        siteName: "mathstutorgeneva.ch",
-        images: [
-            {
-                url: "/images/fees/addition-768x231.png",
-                width: 768,
-                height: 231,
-                alt: "Calvin and Hobbes math cartoon",
-            },
-        ],
-    },
-    twitter: {
-        card: "summary_large_image",
-        title: "Tutoring fees – Dr. Larson, Math Tutor in Geneva",
-        description: "Flexible fees for private maths tuition in Geneva and Nyon",
-        images: ["/images/fees/addition-768x231.png"],
-    },
-};
+    images: [
+        {
+            path: "/images/fees/addition-768x231.png",
+            width: 768,
+            height: 231,
+            alt: "Calvin and Hobbes math cartoon",
+        },
+    ],
+});
 
 // ld+json
 function createJsonLdGraph(baseUrl: string) {

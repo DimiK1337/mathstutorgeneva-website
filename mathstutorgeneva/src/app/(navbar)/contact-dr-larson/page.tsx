@@ -1,45 +1,29 @@
 import React from "react";
-import type { Metadata } from "next";
+
 import Image from "next/image";
+
+// lib
 import { getBaseUrl } from "@/lib/getBaseUrl";
+import { buildMetadata } from "@/lib/metadataBuilder";
 
 // TODO: Replace Skype with Teams
 
-export const metadata: Metadata = {
+import type { Metadata } from "next";
+export const metadata: Metadata = buildMetadata({
     title: "Contact me",
     description:
         "Contact me Email Dr Larson on: DrL@mathstutorgeneva.ch Mobile: +41 79 373 4686 Skype: live:bill_larson_1",
+    slug: "/contact-dr-larson",
     keywords: ["math tutor", "Geneva", "Nyon", "IB", "SAT", "contact", "Dr Larson"],
-    metadataBase: new URL("https://mathstutorgeneva.ch"),
-    alternates: {
-        canonical: "/contact",
-    },
-    openGraph: {
-        type: "article",
-        locale: "en_US",
-        url: "https://mathstutorgeneva.ch/contact",
-        title: "Contact me",
-        description:
-            "Contact me Email Dr Larson on: DrL@mathstutorgeneva.ch Mobile: +41 79 373 4686 Skype: live:bill_larson_1",
-        siteName: "mathstutorgeneva.ch",
-        images: [
-            {
-                url: "/images/contact/rational-real-200x200.png",
-                width: 200,
-                height: 200,
-                alt: "rational vs. real",
-            },
-        ],
-    },
-    twitter: {
-        card: "summary_large_image",
-        title: "Contact Dr. Larson – Math Tutor in Geneva",
-        description:
-            "Get in touch with Dr. W. J. Larson for private math tutoring in Geneva and Nyon. IB, SAT, and more.",
-        images: ["/images/contact/rational-real-200x200.png"],
-    },
-};
-
+    images: [
+        {
+            path: "/images/contact/rational-real-200x200.png",
+            width: 200,
+            height: 200,
+            alt: "Rational vs Real numbers",
+        },
+    ]
+});
 function createJsonLdGraph(baseUrl: string) {
     const webPageJsonLd = {
         "@type": "WebPage",
@@ -116,7 +100,7 @@ export default function Contact() {
     const baseUrl = getBaseUrl();
     const jsonLd = createJsonLdGraph(baseUrl);
     return (
-        <>  
+        <>
             <script
                 type="application/ld+json"
                 dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd).replace(/</g, "\\u003c") }}

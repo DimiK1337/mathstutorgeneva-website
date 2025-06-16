@@ -1,34 +1,20 @@
 import React from "react";
+import Link from "next/link";
+
+// lib
+import { getBaseUrl } from "@/lib/getBaseUrl";
+import { buildMetadata } from "@/lib/metadataBuilder";
 
 import type { Metadata } from "next";
-import Link from "next/link";
-import { getBaseUrl } from "@/lib/getBaseUrl";
-
-export const metadata: Metadata = {
+export const metadata: Metadata = buildMetadata({
     title: "How I tutor",
     description:
         "How I tutor: Typically, I set the student a problem on the topic. Typically the student cannot do the problem ... so, I set an easier problem.",
+    slug: "/how-i-tutor",
     keywords: ["math tutor", "Geneva", "Nyon", "Dr Larson", "how I tutor"],
-    metadataBase: new URL("https://mathstutorgeneva.ch"),
-    alternates: {
-        canonical: "/how-i-tutor",
-    },
-    openGraph: {
-        type: "article",
-        locale: "en_US",
-        url: "https://mathstutorgeneva.ch/how-i-tutor",
-        title: "How I tutor",
-        description:
-            "How I tutor: Typically, I set the student a problem on the topic. Typically the student cannot do the problem ... so, I set an easier problem.",
-        siteName: "mathstutorgeneva.ch",
-    },
-    twitter: {
-        card: "summary",
-        title: "How I tutor",
-        description:
-            "Dr. W. J. Larson explains how he approaches private math tutoring for students in Geneva and Nyon.",
-    },
-};
+    images: [],
+});
+
 
 // ld+json
 function createJsonLdGraph(baseUrl: string) {

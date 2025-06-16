@@ -1,36 +1,21 @@
 import React from "react";
+
+// lib
 import { getBaseUrl } from "@/lib/getBaseUrl";
+import { buildMetadata } from "@/lib/metadataBuilder";
 
 // Components
 import TeachingAidsBtn from "@/components/TeachingAidsBtn";
 
 import type { Metadata } from "next";
-export const metadata: Metadata = {
+export const metadata: Metadata = buildMetadata({
     title: "TI-84 calculator docs",
     description:
         "TI-84 Calculator Guides. Learn which calculators are allowed in the IB exam, how to update your TI-84 software, and download printable guides.",
-    metadataBase: new URL("https://mathstutorgeneva.ch"),
-    alternates: {
-        canonical: "/ti-84-calculator-docs",
-    },
-    robots:
-        "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1",
-    openGraph: {
-        title: "TI-84 calculator docs",
-        description:
-            "TI-84 Calculator Guides – including allowed IB models, update instructions, and downloadable PDF reference sheets.",
-        url: "/ti-84-calculator-docs",
-        siteName: "mathstutorgeneva.ch",
-        type: "article",
-        locale: "en_US",
-    },
-    twitter: {
-        card: "summary_large_image",
-        title: "TI-84 calculator docs",
-        description:
-            "TI-84 calculator guides for IB students – allowed models, software updates, and printable PDFs.",
-    },
-};
+    slug: "/ti-84-calculator-docs",
+    keywords: ["math tutor", "Geneva", "Nyon", "IB", "SAT", "TI-84", "Dr Larson"],
+    images: [],
+});
 
 function createJsonLdGraph(baseUrl: string) {
     const webPageJsonLd = {
@@ -96,7 +81,6 @@ function createJsonLdGraph(baseUrl: string) {
         "@graph": [webPageJsonLd, breadcrumbJsonLd, personJsonLd],
     };
 }
-
 
 const pdfs = [
     {

@@ -1,54 +1,36 @@
 // app/page.tsx
-import type { Metadata } from "next";
 
 import Image from "next/image";
 
 // lib
 import { getBaseUrl } from "@/lib/getBaseUrl";
+import { buildMetadata } from "@/lib/metadataBuilder";
 
 // TODO: Image srcsets for SEO
-
-export const metadata: Metadata = {
+import type { Metadata } from "next";
+export const metadata: Metadata = buildMetadata({
     title: "mathstutorgeneva.ch – Maths tutoring in Geneva and Nyon",
-    description: "Dr W. J. Larson, formerly of the Ecole Internationale is now a private math tutor working in Geneva and Nyon, Switzerland. Math for IB and SAT.",
+    description:
+        "Dr W. J. Larson, formerly of the Ecole Internationale is now a private math tutor working in Geneva and Nyon, Switzerland. Math for IB and SAT.",
+    slug: "/",
     keywords: ["math tutor", "Geneva", "Nyon", "IB", "SAT", "private tutor"],
-    robots: "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1",
-    metadataBase: new URL("https://mathstutorgeneva.ch"),
-    alternates: {
-        canonical: "/",
-    },
-    openGraph: {
-        type: "website",
-        locale: "en_US",
-        url: "https://mathstutorgeneva.ch/",
-        title: "mathstutorgeneva.ch – Maths tutoring in Geneva and Nyon",
-        description: "Dr W. J. Larson, private math tutor in Geneva and Nyon, Switzerland. Math for IB and SAT.",
-        siteName: "mathstutorgeneva.ch",
-        images: [
-            {
-                url: "/images/home/mtg-2019-tutee1-half-400x350.jpg",
-                width: 400,
-                height: 350,
-                alt: "Student 1 tutoring session with Dr. Larson",
-            },
-            {
-                url: "/images/home/mtg-2019-tutee2-half-400x350.jpg",
-                width: 400,
-                height: 350,
-                alt: "Student 2 tutoring session with Dr. Larson",
-            }
-        ],
-    },
-    twitter: {
-        card: "summary_large_image",
-        title: "mathstutorgeneva.ch – Math Tutoring in Geneva",
-        description: "Private tutoring for IB, SAT, AP and more by Dr. W. J. Larson",
-        images: [
-            "/images/home/mtg-2019-tutee1-half-400x350.jpg",
-            "/images/home/mtg-2019-tutee2-half-400x350.jpg",
-        ],
-    },
-};
+    images: [
+        {
+            path: "/images/home/mtg-2019-tutee1-half-400x350.jpg",
+            width: 400,
+            height: 350,
+            alt: "Student 1 tutoring session with Dr. Larson",
+        },
+        {
+            path: "/images/home/mtg-2019-tutee2-half-400x350.jpg",
+            width: 400,
+            height: 350,
+            alt: "Student 2 tutoring session with Dr. Larson",
+        },
+    ],
+    ogType: "website",
+});
+
 
 // ld+json 
 function createJsonLdGraph(baseUrl: string) {
@@ -116,8 +98,6 @@ function createJsonLdGraph(baseUrl: string) {
         "@graph": [webPageJsonLd, breadcrumbJsonLd, personJsonLd],
     };
 }
-
-
 
 export default function Home() {
     const baseUrl = getBaseUrl();

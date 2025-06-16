@@ -1,5 +1,6 @@
 import React from "react";
 import { getBaseUrl } from "@/lib/getBaseUrl";
+import { buildMetadata } from "@/lib/metadataBuilder";
 import { FaRegFilePdf } from "react-icons/fa"; // https://react-icons.github.io/react-icons/icons?name=fa
 
 // Custom handouts data
@@ -9,31 +10,22 @@ import handouts from "@/data/generalHandouts.json";
 import TeachingAidsBtn from "@/components/TeachingAidsBtn";
 
 import type { Metadata } from "next";
-
-export const metadata: Metadata = {
+export const metadata: Metadata = buildMetadata({
     title: "General handouts",
     description:
         "General Handouts – Printable PDFs for exponents, functions, transformations, asymptotes, quadratics and more. Tailored support from Dr W. J. Larson.",
-    metadataBase: new URL("https://mathstutorgeneva.ch"),
-    alternates: {
-        canonical: "/handouts",
-    },
-    openGraph: {
-        title: "General handouts",
-        description:
-            "General Handouts – Printable PDFs for exponents, functions, transformations, asymptotes, quadratics and more. Tailored support from Dr W. J. Larson.",
-        url: "/handouts",
-        siteName: "mathstutorgeneva.ch",
-        type: "article",
-        locale: "en_US",
-    },
-    twitter: {
-        card: "summary_large_image",
-        title: "General handouts",
-        description:
-            "General Handouts – Printable PDFs for exponents, functions, transformations, asymptotes, quadratics and more. Tailored support from Dr W. J. Larson.",
-    }
-};
+    slug: "/handouts",
+    keywords: [
+        "math tutor",
+        "Geneva",
+        "Nyon",
+        "IB",
+        "SAT",
+        "handouts",
+        "Dr Larson",
+    ],
+    images: [],
+});
 
 function createJsonLdGraph(baseUrl: string) {
     const webPageJsonLd = {

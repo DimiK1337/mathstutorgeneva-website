@@ -1,14 +1,16 @@
 import React from "react";
 import Image from "next/image";
 
-import type { Metadata } from "next";
-
+// lib
 import { getBaseUrl } from "@/lib/getBaseUrl";
+import { buildMetadata } from "@/lib/metadataBuilder";
 
-export const metadata: Metadata = {
-    title: "SAT math tutor, Dr W. J. Larson in Nyon Switzerland",
+import type { Metadata } from "next";
+export const metadata: Metadata = buildMetadata({
+    title: "SAT Math Tutor – Dr W. J. Larson",
     description:
-        "The redesigned SAT goes into several advanced topics: non-linear equations, statistics, trigonometric functions, the remainder theorem and complex numbers.",
+        "Expert SAT math preparation in Geneva and Nyon by Dr W. J. Larson – covering algebra, functions, statistics and more.",
+    slug: "/sat-math",
     keywords: [
         "SAT math tutor",
         "Geneva",
@@ -17,26 +19,8 @@ export const metadata: Metadata = {
         "Dr W. J. Larson",
         "SAT preparation",
     ],
-    metadataBase: new URL("https://mathstutorgeneva.ch"),
-    alternates: {
-        canonical: "/sat-math",
-    },
-    openGraph: {
-        type: "article",
-        locale: "en_US",
-        url: "https://mathstutorgeneva.ch/sat-math",
-        title: "SAT math tutor, Dr W. J. Larson in Nyon Switzerland",
-        description:
-            "The redesigned SAT goes into several advanced topics: non-linear equations, statistics, trigonometric functions, the remainder theorem and complex numbers.",
-        siteName: "mathstutorgeneva.ch",
-    },
-    twitter: {
-        card: "summary_large_image",
-        title: "SAT math tutor – Dr W. J. Larson",
-        description:
-            "Expert SAT math preparation in Geneva and Nyon by Dr W. J. Larson – covering algebra, functions, statistics and more.",
-    },
-};
+    images: []
+});
 
 // ld+json
 

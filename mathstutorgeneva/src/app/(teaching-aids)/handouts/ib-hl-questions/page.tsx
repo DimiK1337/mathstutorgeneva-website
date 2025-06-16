@@ -1,38 +1,22 @@
 import React from "react";
-import { getBaseUrl } from "@/lib/getBaseUrl";
-
 import { FaRegFilePdf } from "react-icons/fa";
 
-import type { Metadata } from "next";
+// lib
+import { getBaseUrl } from "@/lib/getBaseUrl";
+import { buildMetadata } from "@/lib/metadataBuilder";
 
 // Components
 import TeachingAidsBtn from "@/components/TeachingAidsBtn";
 
-export const metadata: Metadata = {
+import type { Metadata } from "next";
+export const metadata: Metadata = buildMetadata({
     title: "IB HL questions",
     description:
-        "IB HL Questions – HL Calculus, Induction, Trig, Sequences, and more (2008–2014), with full mark schemes.",
-    metadataBase: new URL("https://mathstutorgeneva.ch"),
-    alternates: {
-        canonical: "/handouts/ib-hl-questions",
-    },
-    openGraph: {
-        title: "IB HL questions",
-        description:
-            "IB HL Questions – HL Calculus, Induction, Trig, Sequences, and more (2008–2014), with full mark schemes.",
-        url: "/handouts/ib-hl-questions",
-        siteName: "mathstutorgeneva.ch",
-        type: "article",
-        locale: "en_US",
-    },
-    twitter: {
-        card: "summary_large_image",
-        title: "IB HL questions",
-        description:
-            "HL Calculus, Induction, Trig, Sequences, and more from 2008–2014. All with mark schemes.",
-    },
-};
-
+        "IB HL Questions – HL Sequences, Trig Identities, Induction, and other past paper topics (2008–2014), with full mark schemes.",
+    slug: "/handouts/ib-hl-questions",
+    keywords: ["math tutor", "Geneva", "Nyon", "IB", "SAT", "handouts", "HL", "Dr Larson"],
+    images: [],
+});
 
 function createJsonLdGraph(baseUrl: string) {
     const webPageJsonLd = {
