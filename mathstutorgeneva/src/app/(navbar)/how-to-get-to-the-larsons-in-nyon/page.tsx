@@ -9,7 +9,7 @@ export const metadata: Metadata = {
     title: "How to get to the Larsons’ in Nyon",
     description: "How to get to the Larsons' in Nyon",
     alternates: {
-        canonical: "/location",
+        canonical: "/how-to-get-to-the-larsons-in-nyon",
     },
     openGraph: {
         title: "How to get to the Larsons’ in Nyon",
