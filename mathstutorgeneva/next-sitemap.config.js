@@ -1,9 +1,11 @@
 /** @type {import('next-sitemap').IConfig} */
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://mathstutorgeneva.vercel.app';
+
 module.exports = {
-    siteUrl: 'https://mathstutorgeneva.ch',
-    generateRobotsTxt: true, // 👈 this will also generate robots.txt
+    siteUrl,
+    generateRobotsTxt: true,
     changefreq: 'monthly',
     priority: 0.7,
     sitemapSize: 7000,
-    exclude: ['/404', '/server-error'], // exclude any dynamic/internal routes if needed
+    exclude: ['/404', '/server-error'],
 };
