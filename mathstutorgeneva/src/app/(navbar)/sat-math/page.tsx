@@ -1,15 +1,15 @@
 import React from "react";
-import Image from "next/image";
 
 // lib
 import { getBaseUrl } from "@/lib/getBaseUrl";
 import { buildMetadata } from "@/lib/metadataBuilder";
 
 import type { Metadata } from "next";
+
 export const metadata: Metadata = buildMetadata({
     title: "SAT Math Tutor – Dr W. J. Larson",
     description:
-        "Expert SAT math preparation in Geneva and Nyon by Dr W. J. Larson – covering algebra, functions, statistics and more.",
+        "Expert SAT Math preparation in Geneva and Nyon by Dr W. J. Larson – covering algebra, advanced math, data analysis, geometry and trigonometry.",
     slug: "/sat-math",
     keywords: [
         "SAT math tutor",
@@ -18,8 +18,10 @@ export const metadata: Metadata = buildMetadata({
         "private tutor",
         "Dr W. J. Larson",
         "SAT preparation",
+        "digital SAT",
+        "Bluebook",
     ],
-    images: []
+    images: [],
 });
 
 // ld+json
@@ -29,9 +31,9 @@ function createJsonLdGraph(baseUrl: string) {
         "@type": "WebPage",
         "@id": `${baseUrl}/sat-math`,
         url: `${baseUrl}/sat-math`,
-        name: "SAT math tutor, Dr W. J. Larson in Nyon Switzerland",
+        name: "SAT Math Tutor – Dr. W. J. Larson in Nyon, Switzerland",
         description:
-            "The redesigned SAT goes into several advanced topics: non-linear equations, statistics, trigonometric functions, the remainder theorem and complex numbers.",
+            "SAT Math preparation covering algebra, advanced math, problem-solving and data analysis, geometry and trigonometry.",
         inLanguage: "en-US",
         dateModified: new Date().toISOString().split("T")[0],
         isPartOf: {
@@ -39,11 +41,12 @@ function createJsonLdGraph(baseUrl: string) {
             url: baseUrl,
             name: "mathstutorgeneva.ch",
         },
+        // TODO: Find image to use (perhaps just Dr. Larson)
         primaryImageOfPage: {
             "@type": "ImageObject",
-            url: `${baseUrl}/images/SAT-math/sat-subject-tests.png`,
-            width: 200,
-            height: 200,
+            url: "",
+            width: "",
+            height: "",
         },
         breadcrumb: {
             "@id": `${baseUrl}/sat-math#breadcrumb`,
@@ -95,23 +98,51 @@ function createJsonLdGraph(baseUrl: string) {
     };
 }
 
-const books = [
+// Should probably be moved to data folder
+const satTopics = [
     {
-        src: "sat-subject-tests.png",
-        caption: "SAT Subject Tests",
-        order_url: "https://store.collegeboard.org/sto/productdetail.do?Itemkey=112199&category=325&categoryName=SAT%AE&secondCategory=&secondCatName=&thirdLevelCategory=&thirdLevelCatName=%20rel=noopener%20noreferrer"
+        title: "Algebra",
+        topics: [
+            "Linear equations in 1 variable",
+            "Linear equations in 2 variables",
+            "Linear functions",
+            "Systems of 2 linear equations in 2 variables",
+            "Linear inequalities in 1 or 2 variables",
+        ],
     },
     {
-        src: "mtg-sat-math-1-study-guide-200x200.png",
-        caption: "SAT Math Level 1",
-        order_url: "https://store.collegeboard.org/sto/productdetail.do?Itemkey=109304&category=325&categoryName=SAT%AE&secondCategory=&secondCatName=&thirdLevelCategory=&thirdLevelCatName=The%20Official%20SAT%20Subject%20Test%20Study%20Guide%20in%20Math%20Level%201"
+        title: "Advanced Math",
+        topics: [
+            "Equivalent expressions",
+            "Nonlinear equations in 1 variable",
+            "Systems of equations in 2 variables",
+            "Nonlinear functions",
+        ],
     },
     {
-        src: "mtg-sat-math-2-study-guide-200x200.png",
-        caption: "SAT Math Level 2",
-        order_url: "https://store.collegeboard.org/sto/productdetail.do?Itemkey=109328&category=325&categoryName=SAT%AE&secondCategory=&secondCatName=&thirdLevelCategory=&thirdLevelCatName=The%20Official%20SAT%20Subject%20Test%20Study%20Guide%20in%20Math%20Level%202"
+        title: "Problem-Solving and Data Analysis",
+        topics: [
+            "Ratios, rates, proportional relationships, and units",
+            "Percentages",
+            "One-variable data: distributions and measures of center and spread",
+            "Two-variable data: models and scatterplots",
+            "Probability and conditional probability",
+            "Inference from sample statistics and margin of error",
+            "Evaluating statistical claims: observational studies and experiments",
+        ],
+    },
+    {
+        title: "Geometry and Trigonometry",
+        topics: [
+            "Area and volume formulas",
+            "Lines, angles, and triangles",
+            "Right triangles and trigonometry",
+            "Circles",
+        ],
     },
 ];
+
+const bluebookUrl = "https://bluebook.app.collegeboard.org/";
 
 export default function SATMath() {
     const baseUrl = getBaseUrl();
@@ -121,7 +152,9 @@ export default function SATMath() {
         <>
             <script
                 type="application/ld+json"
-                dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd).replace(/</g, "\\u003c") }}
+                dangerouslySetInnerHTML={{
+                    __html: JSON.stringify(jsonLd).replace(/</g, "\\u003c"),
+                }}
             />
 
             <div className="max-w-4xl mx-auto px-6 py-12 space-y-12 text-gray-800 dark:text-gray-100">
@@ -130,80 +163,162 @@ export default function SATMath() {
                     <h1 className="text-3xl font-bold text-blue-700 dark:text-blue-400">
                         SAT Math Preparation
                     </h1>
+
                     <p>
-                        I have helped students succeed on the SAT since the 1990s. I know the structure of the math test well and focus on:
+                        I have helped students prepare for the SAT since the
+                        1990s. My tutoring focuses on understanding the
+                        mathematics, identifying weak areas, developing
+                        efficient problem-solving methods, and practising under
+                        realistic SAT conditions.
                     </p>
+
                     <ul className="list-disc list-inside space-y-2 mt-2">
-                        <li>Teaching students what content they need to know</li>
-                        <li>Reviewing forgotten algebra and geometry</li>
-                        <li>Helping them spot traps and use time wisely</li>
-                        <li>Giving them plenty of practice with feedback</li>
+                        <li>
+                            Teaching students the mathematical content they need
+                            for the SAT
+                        </li>
+                        <li>
+                            Reviewing algebra, geometry, statistics and other
+                            topics that may have been forgotten
+                        </li>
+                        <li>
+                            Developing efficient approaches to unfamiliar
+                            problems
+                        </li>
+                        <li>
+                            Giving students extensive practice with feedback
+                        </li>
                     </ul>
                 </section>
 
                 {/* SAT Math Structure */}
                 <section className="space-y-4">
                     <h2 className="text-2xl font-semibold text-blue-700 dark:text-blue-400">
-                        The SAT Math Section
+                        The Digital SAT Math Section
                     </h2>
-                    <p>The math section is composed of two parts:</p>
+
+                    <p>
+                        The SAT Math section is digital and adaptive. It lasts
+                        70 minutes and contains 44 questions divided into two
+                        modules.
+                    </p>
+
                     <ul className="list-disc list-inside space-y-2">
                         <li>
-                            <strong>No calculator:</strong> 25 minutes, 20 questions
+                            <strong>Module 1:</strong> 35 minutes
                         </li>
                         <li>
-                            <strong>Calculator allowed:</strong> 55 minutes, 38 questions
+                            <strong>Module 2:</strong> 35 minutes
                         </li>
                     </ul>
+
                     <p>
-                        The questions are a mix of multiple choice and &ldquo;grid-ins&rdquo;, where students write their answer in boxes. Scoring is based on correct answers only — no penalty for guessing.
+                        Students answer both multiple-choice questions and
+                        student-produced response questions. Performance on the
+                        first module influences the difficulty of the second
+                        module.
+                    </p>
+
+                    <p>
+                        A calculator may be used throughout the Math section.
+                        Bluebook also provides a built-in calculator.
                     </p>
                 </section>
 
                 {/* SAT Math Topics */}
                 <section className="space-y-4">
                     <h2 className="text-2xl font-semibold text-blue-700 dark:text-blue-400">
-                        Content Areas
+                        SAT Math Topics
                     </h2>
-                    <p>The SAT Math section focuses on:</p>
-                    <ul className="list-disc list-inside space-y-1">
-                        <li>Heart of Algebra (linear equations, systems)</li>
-                        <li>Problem Solving & Data Analysis (percent, ratio, charts)</li>
-                        <li>Passport to Advanced Math (quadratics, functions)</li>
-                        <li>Additional Topics (geometry, complex numbers, trigonometry)</li>
-                    </ul>
-                </section>
 
-                {/* Quote */}
-                <section className="text-center">
-                    <blockquote className="italic text-gray-600 dark:text-gray-300 max-w-xl mx-auto">
-                        “It’s not that I’m so smart, it’s just that I stay with problems longer.”
-                        <br />
-                        <span className="block font-semibold mt-2">— Albert Einstein</span>
-                    </blockquote>
-                </section>
+                    <p>
+                        The SAT Math section is organised into four main content
+                        areas. Expand each section to see the topics covered.
+                    </p>
 
-                {/* SAT Books */}
-                <section>
-                    <h2 className="text-2xl font-semibold mb-6 text-blue-700 dark:text-blue-400 text-center">
-                        SAT Math Books I Use
-                    </h2>
-                    <div className="grid grid-cols-2 md:grid-cols-3 gap-4 place-items-center items-baseline">
-                        {books.map(({ src, caption, order_url }) => (
-                            <div key={src} className="text-center space-y-2">
-                                <a href={order_url} target="_blank" rel="noopener noreferrer">
-                                    <Image
-                                        src={`/images/SAT-math/${src}`}
-                                        alt={caption}
-                                        width={180}
-                                        height={180}
-                                        className="rounded shadow-md w-full max-w-[180px] mx-auto"
-                                    />
-                                </a>
-                                <p className="text-sm text-gray-700 dark:text-gray-200">{caption}</p>
-                            </div>
+                    <div className="space-y-3">
+                        {satTopics.map(({ title, topics }) => (
+                            <details
+                                key={title}
+                                className="group rounded-lg border border-gray-300 dark:border-slate-700 p-4"
+                            >
+                                <summary className="cursor-pointer font-semibold text-lg text-blue-700 dark:text-blue-400">
+                                    {title}
+                                </summary>
+
+                                <ul className="list-disc pl-6 mt-3 space-y-1">
+                                    {topics.map((topic) => (
+                                        <li key={topic}>{topic}</li>
+                                    ))}
+                                </ul>
+                            </details>
                         ))}
                     </div>
+                </section>
+
+                {/* Bluebook */}
+                <section className="space-y-4">
+                    <h2 className="text-2xl font-semibold text-blue-700 dark:text-blue-400">
+                        Practice with Bluebook
+                    </h2>
+
+                    <p>
+                        College Board provides full-length adaptive SAT practice
+                        tests through its Bluebook application. These practice
+                        tests allow students to become familiar with the same
+                        digital format used for the SAT.
+                    </p>
+
+                    <p>
+                        After completing a practice test, students can review
+                        their scores, correct answers, and explanations to
+                        identify areas that need further work.
+                    </p>
+
+                    <a
+                        href={bluebookUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-block font-semibold text-blue-600 dark:text-blue-400 hover:underline"
+                    >
+                        Download Bluebook
+                    </a>
+                </section>
+
+                {/* How I Prepare Students */}
+                <section className="space-y-4">
+                    <h2 className="text-2xl font-semibold text-blue-700 dark:text-blue-400">
+                        How I Prepare Students
+                    </h2>
+
+                    <p>
+                        SAT preparation is most effective when students
+                        understand both the mathematics and the way the test
+                        presents its questions.
+                    </p>
+
+                    <ul className="list-disc list-inside space-y-2">
+                        <li>
+                            Identify gaps in algebra, geometry and data analysis
+                        </li>
+                        <li>
+                            Review concepts that have been forgotten or never
+                            fully mastered
+                        </li>
+                        <li>
+                            Work through difficult SAT-style questions step by
+                            step
+                        </li>
+                        <li>
+                            Develop efficient problem-solving strategies
+                        </li>
+                        <li>
+                            Practise pacing and working under timed conditions
+                        </li>
+                        <li>
+                            Review mistakes to identify recurring weaknesses
+                        </li>
+                    </ul>
                 </section>
             </div>
         </>
