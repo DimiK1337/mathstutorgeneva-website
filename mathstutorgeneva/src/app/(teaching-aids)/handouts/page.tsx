@@ -1,4 +1,5 @@
 import React from "react";
+import Link from "next/link";
 
 import { FaRegFilePdf } from "react-icons/fa"; // https://react-icons.github.io/react-icons/icons?name=fa
 
@@ -14,87 +15,24 @@ import handouts from "@/data/generalHandouts.json";
 import TeachingAidsBtn from "@/components/TeachingAidsBtn";
 
 import type { Metadata } from "next";
+
 export const metadata: Metadata = buildMetadata({
     title: "General handouts",
     description:
-        "General Handouts – Printable PDFs for exponents, functions, transformations, asymptotes, quadratics and more. Tailored support from Dr W. J. Larson.",
+        "General Handouts – Printable PDFs for exponents, functions, transformations, asymptotes, quadratics and more. Tailored support from Dr. William J. Larson.",
     slug: "/handouts",
     keywords: [
+        "Dr. William J. Larson",
         "math tutor",
         "Geneva",
         "Nyon",
         "IB",
         "SAT",
         "handouts",
-        "Dr Larson",
+        "Dr. Larson",
     ],
     images: [],
 });
-
-// function createJsonLdGraph(baseUrl: string) {
-//     const webPageJsonLd = {
-//         "@type": "WebPage",
-//         "@id": `${baseUrl}/handouts`,
-//         url: `${baseUrl}/handouts`,
-//         name: "General handouts",
-//         description:
-//             "General Handouts – Printable PDFs for exponents, functions, transformations, asymptotes, quadratics and more. Tailored support from Dr W. J. Larson.",
-//         inLanguage: "en-US",
-//         dateModified: new Date().toISOString().split("T")[0],
-//         isPartOf: {
-//             "@type": "WebSite",
-//             url: baseUrl,
-//             name: "mathstutorgeneva.ch",
-//         },
-//         breadcrumb: {
-//             "@id": `${baseUrl}/handouts#breadcrumb`,
-//         },
-//     };
-
-//     const breadcrumbJsonLd = {
-//         "@type": "BreadcrumbList",
-//         "@id": `${baseUrl}/handouts#breadcrumb`,
-//         itemListElement: [
-//             {
-//                 "@type": "ListItem",
-//                 position: 1,
-//                 name: "Home",
-//                 item: `${baseUrl}/`,
-//             },
-//             {
-//                 "@type": "ListItem",
-//                 position: 2,
-//                 name: "General handouts",
-//                 item: `${baseUrl}/handouts`,
-//             },
-//         ],
-//     };
-
-//     // const personJsonLd = {
-//     //     "@type": "Person",
-//     //     name: "Dr. W. J. Larson",
-//     //     jobTitle: "Private Maths Tutor",
-//     //     url: `${baseUrl}/`,
-//     //     image: `${baseUrl}/images/about-dr-larson-maths-tutor/cropped-bill2-200x200.jpg`,
-//     //     worksFor: [
-//     //         {
-//     //             "@type": "Organization",
-//     //             name: "CERN",
-//     //             url: "https://home.cern/",
-//     //         },
-//     //         {
-//     //             "@type": "EducationalOrganization",
-//     //             name: "International School of Geneva – La Grande Boissière",
-//     //             url: "https://www.ecolint.ch/our-campuses/la-grande-boissiere",
-//     //         },
-//     //     ],
-//     // };
-//     const personJsonLd = createPersonJsonLd(baseUrl);
-//     return {
-//         "@context": "https://schema.org",
-//         "@graph": [webPageJsonLd, breadcrumbJsonLd, personJsonLd],
-//     };
-// }
 
 
 export default function GeneralHandouts() {
@@ -124,14 +62,14 @@ export default function GeneralHandouts() {
                                 <div key={title} className="flex items-center space-x-2">
                                     <FaRegFilePdf className="text-red-600" />
                                     {file ? (
-                                        <a
+                                        <Link
                                             href={`/pdfs/handouts/general/${file}`}
                                             target="_blank"
                                             rel="noopener noreferrer"
                                             className="text-blue-700 hover:underline text-sm"
                                         >
                                             {title}
-                                        </a>
+                                        </Link>
                                     ) : (
                                         <span className="text-gray-400 text-sm italic">
                                             {title} (coming soon)

@@ -3,7 +3,7 @@
 export const routeNames = {
     "/": "Home",
 
-    "/about-dr-larson-maths-tutor": "About Dr Larson",
+    "/about-dr-larson-maths-tutor": "About Dr. Larson",
     "/how-i-tutor": "How I Tutor",
     "/sat-math": "SAT Math",
     "/testimonials": "Testimonials",

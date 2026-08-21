@@ -1,6 +1,7 @@
 // app/page.tsx
 
 import Image from "next/image";
+import Link from "next/link";
 
 // lib
 import { getBaseUrl } from "@/lib/getBaseUrl";
@@ -21,9 +22,9 @@ export const metadata: Metadata = buildMetadata({
 
     // TODO: May need to add extra words in description for Physics and Astronomy 
     description:
-        "Dr W. J. Larson, formerly of the Ecole Internationale is now a private maths tutor working in Geneva and Nyon, Switzerland. Maths for IB and SAT & ACT.",
+        "Dr. William J. Larson, formerly of the Ecole Internationale is now a private maths tutor working in Geneva and Nyon, Switzerland. Maths for IB and SAT & ACT.",
     slug: "/",
-    keywords: ["maths tutor", "Geneva", "Nyon", "IB", "SAT", "ACT", "private tutor", "Dr. Larson"],
+    keywords: ["Dr. William J. Larson", "maths tutor", "Geneva", "Nyon", "IB", "SAT", "ACT", "private tutor", "Dr. Larson"],
     images: [
         {
             path: "/images/home/mtg-2019-tutee1-half-400x350.jpg",
@@ -41,53 +42,6 @@ export const metadata: Metadata = buildMetadata({
     ogType: "website",
 });
 
-
-// ld+json 
-// function createJsonLdGraph(baseUrl: string) {
-//     const webPageJsonLd = {
-//         "@type": "WebPage",
-//         "@id": `${baseUrl}/`,
-//         url: `${baseUrl}/`,
-//         name: metadata.title,
-//         description: metadata.description,
-//         primaryImageOfPage: {
-//             "@type": "ImageObject",
-//             url: `${baseUrl}/images/home/mtg-2019-tutee1-half-400x350.jpg`,
-//             width: 400,
-//             height: 350,
-//             contentUrl: `${baseUrl}/images/home/mtg-2019-tutee1-half-400x350.jpg`,
-//         },
-//         inLanguage: "en-US",
-//         dateModified: new Date().toISOString().split("T")[0],
-//         isPartOf: {
-//             "@type": "WebSite",
-//             url: baseUrl,
-//             name: "mathstutorgeneva.ch",
-//         },
-//         breadcrumb: {
-//             "@id": `${baseUrl}/#breadcrumb`,
-//         },
-//     };
-
-//     const breadcrumbJsonLd = {
-//         "@type": "BreadcrumbList",
-//         "@id": `${baseUrl}/#breadcrumb`,
-//         itemListElement: [
-//             {
-//                 "@type": "ListItem",
-//                 position: 1,
-//                 name: "Home",
-//                 item: `${baseUrl}/`,
-//             },
-//         ],
-//     };
-//     const personJsonLd = createPersonJsonLd(baseUrl);
-//     return {
-//         "@context": "https://schema.org",
-//         "@graph": [webPageJsonLd, breadcrumbJsonLd, personJsonLd],
-//     };
-// }
-
 export default function Home() {
     const baseUrl = getBaseUrl();
     const jsonLd = createJsonLdGraph(baseUrl, metadata);
@@ -104,7 +58,7 @@ export default function Home() {
                 {/* Hero Section */}
                 <section className="text-center mt-10">
                     <h1 className="text-4xl md:text-5xl font-extrabold text-blue-700 dark:text-blue-400">
-                        Dr. W. J. Larson, Private Maths Tutor
+                        Dr. William J. Larson, Private Maths Tutor
                     </h1>
                     <p className="mt-4 text-lg md:text-xl text-gray-700 dark:text-gray-300">
                         Formerly of <a className="text-blue-700 underline dark:text-blue-400" href="https://home.cern/about">CERN</a> and the <a className="text-blue-700 underline dark:text-blue-400" href="https://www.ecolint.ch/en/la-grande-boissiere">Ecole Internationale in Geneva</a>. Teaching IB, SAT, and AP maths with clarity and passion.
@@ -188,12 +142,12 @@ export default function Home() {
                         <br />
                         <span className="mt-2 block font-bold text-sm">— B, father of tutee</span>
                     </p>
-                    <a
+                    <Link
                         href="/testimonials"
                         className="inline-block mt-4 text-blue-600 dark:text-blue-400 hover:underline font-medium"
                     >
                         Read more testimonials →
-                    </a>
+                    </Link>
                 </section>
 
                 {/* Experience */}
@@ -209,7 +163,7 @@ export default function Home() {
                     <p className="text-lg font-medium text-gray-800 dark:text-white">Where I tutor:</p>
                     <ul className="flex flex-wrap justify-center gap-4 mt-2 text-blue-700 dark:text-blue-300">
                         <li>• At the student’s home</li>
-                        <li>• <a href="/how-to-get-there" className="underline">At the Larsons’ home in Nyon</a></li>
+                        <li>• <Link href="/how-to-get-to-the-larsons-in-nyon" className="underline">At the Larsons’ home in Nyon</Link></li>
                         <li>• By <ContactLink text={"Teams"} href={`https://teams.microsoft.com/l/call/0/0?users=${encodeURIComponent(contactData.email)}`} /></li>
                     </ul>
                 </section>
@@ -218,11 +172,11 @@ export default function Home() {
                 <section className="text-center py-6" id="TeachingAids">
                     <h2 className="text-xl font-semibold text-blue-800 dark:text-blue-300 mb-2">Free Teaching Aids</h2>
                     <nav className="flex flex-wrap justify-center gap-4 text-sm font-medium text-blue-700 dark:text-blue-300">
-                        <a href="/maths-jokes" className="hover:underline">Maths Ten Commandments</a>
-                        <a href="/handouts" className="hover:underline">General Handouts</a>
-                        <a href="/handouts/ib-hl-questions" className="hover:underline">IB HL Questions</a>
-                        <a href="/handouts/ib-sl-questions" className="hover:underline">IB SL Questions</a>
-                        <a href="/ti-84-calculator-docs" className="hover:underline">TI-84 Calculator Guides</a>
+                        <Link href="/maths-jokes" className="hover:underline">Maths Ten Commandments</Link>
+                        <Link href="/handouts" className="hover:underline">General Handouts</Link>
+                        <Link href="/handouts/ib-hl-questions" className="hover:underline">IB HL Questions</Link>
+                        <Link href="/handouts/ib-sl-questions" className="hover:underline">IB SL Questions</Link>
+                        <Link href="/ti-84-calculator-docs" className="hover:underline">TI-84 Calculator Guides</Link>
 
                         <a
                             href="https://tutorial.math.lamar.edu/Extras/CommonErrors/AlgebraErrors.aspx"
@@ -234,7 +188,6 @@ export default function Home() {
                         </a>
                     </nav>
                 </section>
-
             </div>
         </>
     );

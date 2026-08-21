@@ -5,102 +5,65 @@ import Link from 'next/link';
 // lib
 import { getBaseUrl } from "@/lib/getBaseUrl";
 import { buildMetadata } from "@/lib/metadataBuilder";
-// import createPersonJsonLd from '@/lib/createPersonJsonLd';
 import { createJsonLdGraph } from '@/lib/createJsonLdGraph';
 
 // metadata
 import type { Metadata } from 'next';
 export const metadata: Metadata = buildMetadata({
-    title: "About Dr Larson, private maths tutor in Geneva and Nyon.",
+    title: "About Dr. Larson, private maths tutor in Geneva and Nyon.",
     description:
-        "For many years Dr Larson taught maths for the IB Diploma Program, IGCSE and US high school syllabuses (grades 7 to 13) at the Ecole Internationale in Geneva.",
+        "For many years Dr. Larson taught maths for the IB Diploma Program, IGCSE and US high school syllabuses (grades 7 to 13) at the Ecole Internationale in Geneva.",
     slug: "/about-dr-larson-maths-tutor",
-    keywords: ["maths tutor", "Geneva", "Nyon", "IB", "SAT", "ACT", "Dr. Larson"],
+    keywords: ["Dr. William J. Larson", "maths tutor", "Geneva", "Nyon", "IB", "SAT", "ACT", "Dr. Larson"],
     images: []
 });
 
-// ld+json
-// function createJsonLdGraph(baseUrl: string) {
-//     const webPageJsonLd = {
-//         "@type": "WebPage",
-//         "@id": `${baseUrl}/about-dr-larson-maths-tutor`,
-//         url: `${baseUrl}/about-dr-larson-maths-tutor`,
-//         name: metadata.title,
-//         description: metadata.description,
-//         inLanguage: "en-US",
-//         dateModified: new Date().toISOString().split("T")[0],
-//         isPartOf: {
-//             "@type": "WebSite",
-//             url: baseUrl,
-//             name: "mathstutorgeneva.ch",
-//         },
-//         primaryImageOfPage: {
-//             "@type": "ImageObject",
-//             url: `${baseUrl}/images/about-dr-larson-maths-tutor/cropped-bill2-200x200.jpg`,
-//             width: 200,
-//             height: 200,
-//         },
-//         breadcrumb: {
-//             "@id": `${baseUrl}/about-dr-larson-maths-tutor#breadcrumb`,
-//         },
-//     };
-
-//     const breadcrumbJsonLd = {
-//         "@type": "BreadcrumbList",
-//         "@id": `${baseUrl}/about-dr-larson-maths-tutor#breadcrumb`,
-//         itemListElement: [
-//             {
-//                 "@type": "ListItem",
-//                 position: 1,
-//                 name: "Home",
-//                 item: `${baseUrl}/`,
-//             },
-//             {
-//                 "@type": "ListItem",
-//                 position: 2,
-//                 name: "About Dr Larson",
-//                 item: `${baseUrl}/about-dr-larson-maths-tutor`,
-//             },
-//         ],
-//     };
-//     const personJsonLd = createPersonJsonLd(baseUrl);
-//     return {
-//         "@context": "https://schema.org",
-//         "@graph": [webPageJsonLd, breadcrumbJsonLd, personJsonLd],
-//     };
-// }
-
+const books = [
+    {
+        filename: 'Common-Core-IBID-Cover-308x400.jpg',
+        caption: 'Common Core',
+        url: 'https://www.ibid.com.au/products/mathematics-common-core/',
+    },
+    {
+        filename: 'Cover-Maths-PureSL-Front-305x400.jpg',
+        caption: 'Analysis & Approaches SL',
+        url: 'https://www.ibid.com.au/products/mathematics-analysis-approaches-sl/',
+    },
+    {
+        filename: 'Cover-Maths-AppSL-Front-304x400.jpg',
+        caption: 'Applications & Interpretations SL',
+        url: 'https://www.ibid.com.au/products/mathematics-applications-and-interpretations-sl/',
+    },
+    {
+        filename: 'AA-HL-IBID-Cover-305x400.jpg',
+        caption: 'Analysis & Approaches HL',
+        url: 'https://www.ibid.com.au/products/mathematics-analysis-approaches-hl',
+    },
+    {
+        filename: 'Cover-Maths-AppHL-Front-304x400.jpg',
+        caption: 'Applications & Interpretations HL',
+        url: 'https://www.ibid.com.au/products/mathematics-applications-and-interpretations-hl/',
+    },
+    {
+        filename: 'Groups_book_Larson_279x354.jpg',
+        caption: 'Mathematics HL Topic 8 — Sets, Relations and Groups',
+        url: 'https://www.proninib.com/product/91-maths-hl-topic-8-sets-relations-and-groups',
+    },
+    {
+        filename: 'Stats_book_Larson_463x655.jpg',
+        caption: 'Mathematics Higher Level Option 8 — Statistics and Probability',
+        url: 'https://www.amazon.co.uk/Mathematics-Higher-Level-Statistics-Probability/dp/1876659882',
+    },
+    {
+        filename: 'Astronomy_book_Larson_264x353.jpg',
+        caption: 'Astronomy Lab For The Amateur',
+        url: 'not online',
+    }
+];
 
 export default function AboutDrLarsonMathsTutor() {
     const baseUrl = getBaseUrl();
     const jsonLd = createJsonLdGraph(baseUrl, metadata);
-    const books = [
-        {
-            filename: 'Common-Core-IBID-Cover-308x400.jpg',
-            caption: 'Common Core',
-            url: 'https://www.ibid.com.au/maths/mathematics-common-core/',
-        },
-        {
-            filename: 'Cover-Maths-PureSL-Front-305x400.jpg',
-            caption: 'Analysis & Approaches SL',
-            url: 'https://www.ibid.com.au/maths/mathematics-analysis-approaches-sl/',
-        },
-        {
-            filename: 'Cover-Maths-AppSL-Front-304x400.jpg',
-            caption: 'Applications & Interpretations SL',
-            url: 'https://www.ibid.com.au/maths/mathematics-applications-and-interpretations-sl/',
-        },
-        {
-            filename: 'AA-HL-IBID-Cover-305x400.jpg',
-            caption: 'Analysis & Approaches HL',
-            url: 'https://www.ibid.com.au/maths/mathematics-analysis-approaches-hl/',
-        },
-        {
-            filename: 'Cover-Maths-AppHL-Front-304x400.jpg',
-            caption: 'Applications & Interpretations HL',
-            url: 'https://www.ibid.com.au/maths/mathematics-applications-and-interpretations-hl/',
-        },
-    ];
 
     return (
         <>
@@ -115,13 +78,13 @@ export default function AboutDrLarsonMathsTutor() {
                 <section className="text-center space-y-4">
                     <Image
                         src="/images/about-dr-larson-maths-tutor/cropped-bill2-200x200.jpg"
-                        alt="Dr. William Larson"
+                        alt="Dr. William J. Larson"
                         width={128}
                         height={128}
                         className="mx-auto rounded-full shadow-md object-cover transition-transform hover:scale-105"
                     />
                     <h1 className="text-4xl font-extrabold text-blue-700 dark:text-blue-400">
-                        About Dr. W. J. Larson
+                        About Dr. William J. Larson
                     </h1>
                     <p className="text-lg text-gray-600 dark:text-gray-300">
                         Private Maths Tutor in Geneva and Nyon
@@ -162,10 +125,10 @@ export default function AboutDrLarsonMathsTutor() {
                     <h2 className="text-2xl font-semibold mb-4">Publications</h2>
                     <p>In 2019, Dr. Larson authored five maths textbooks:</p>
 
-                    <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-6 mt-6">
+                    <div className="grid grid-cols-1 sm:grid-cols-4 lg:grid-cols-4 gap-4 mt-6 text-center">
                         {books.map(({ filename, caption, url }) => (
-                            <div key={filename} className="text-center">
-                                <a href={url} target="_blank" rel="noopener noreferrer">
+                            <div key={filename} className="flex flex-col w-fit text-center items-center mx-auto">
+                                <Link href={url} target="_blank" rel="noopener noreferrer">
                                     <Image
                                         src={`/images/about-dr-larson-maths-tutor/textbooks/${filename}`}
                                         alt={caption}
@@ -173,7 +136,7 @@ export default function AboutDrLarsonMathsTutor() {
                                         height={208} // approx. 308x400 scaled
                                         className="rounded shadow-md object-cover mb-2 transition-transform hover:scale-105"
                                     />
-                                </a>
+                                </Link>
                                 <p className="text-sm font-medium">{caption}</p>
                             </div>
                         ))}
@@ -189,7 +152,7 @@ export default function AboutDrLarsonMathsTutor() {
                 <section>
                     <h2 className="text-2xl font-semibold mb-4">Personal Life</h2>
                     <p>
-                        Dr. Larson is an avid hiker, mountaineer, skier, and bicyclist. He resides in Nyon, Switzerland, with his two sons.
+                        Dr. Larson is an avid hiker, residing in Nyon, Switzerland, with his two sons.
                     </p>
                 </section>
             </div>

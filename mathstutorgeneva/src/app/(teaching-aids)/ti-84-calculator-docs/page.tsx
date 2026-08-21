@@ -1,4 +1,5 @@
 import React from "react";
+import Link from "next/link";
 
 // lib
 import { getBaseUrl } from "@/lib/getBaseUrl";
@@ -13,53 +14,9 @@ export const metadata: Metadata = buildMetadata({
     description:
         "TI-84 Calculator Guides. Learn which calculators are allowed in the IB exam, how to update your TI-84 software, and download printable guides.",
     slug: "/ti-84-calculator-docs",
-    keywords: ["maths tutor", "Geneva", "Nyon", "IB", "IGCSE", "SAT", "ACT", "TI-84", "Dr. Larson"],
+    keywords: ["Dr. William J. Larson", "maths tutor", "Geneva", "Nyon", "IB", "IGCSE", "SAT", "ACT", "TI-84", "Dr. Larson"],
     images: [],
 });
-
-// function createJsonLdGraph(baseUrl: string) {
-//     const webPageJsonLd = {
-//         "@type": "WebPage",
-//         "@id": `${baseUrl}/ti-84-calculator-docs`,
-//         url: `${baseUrl}/ti-84-calculator-docs`,
-//         name: metadata.title,
-//         description: metadata.description,
-//         inLanguage: "en-US",
-//         dateModified: new Date().toISOString().split("T")[0],
-//         isPartOf: {
-//             "@type": "WebSite",
-//             url: baseUrl,
-//             name: "mathstutorgeneva.ch",
-//         },
-//         breadcrumb: {
-//             "@id": `${baseUrl}/ti-84-calculator-docs#breadcrumb`,
-//         },
-//     };
-
-//     const breadcrumbJsonLd = {
-//         "@type": "BreadcrumbList",
-//         "@id": `${baseUrl}/ti-84-calculator-docs#breadcrumb`,
-//         itemListElement: [
-//             {
-//                 "@type": "ListItem",
-//                 position: 1,
-//                 name: "Home",
-//                 item: `${baseUrl}/`,
-//             },
-//             {
-//                 "@type": "ListItem",
-//                 position: 2,
-//                 name: "TI-84 calculator docs",
-//                 item: `${baseUrl}/ti-84-calculator-docs`,
-//             },
-//         ],
-//     };
-//     const personJsonLd = createPersonJsonLd(baseUrl);
-//     return {
-//         "@context": "https://schema.org",
-//         "@graph": [webPageJsonLd, breadcrumbJsonLd, personJsonLd],
-//     };
-// }
 
 const pdfs = [
     {
@@ -102,14 +59,14 @@ export default function TI84CalculatorDocs() {
                     </p>
                     <p>
                         How to update software on the TI-84:{" "}
-                        <a
+                        <Link
                             href="/pdfs/ti-84-calculator-docs/updating-ti-84-calculators.pdf"
                             target="_blank"
                             rel="noopener noreferrer"
                             className="text-blue-600 dark:text-blue-300 underline"
                         >
                             Updating TI-84
-                        </a>
+                        </Link>
                     </p>
                 </div>
 
@@ -129,7 +86,7 @@ export default function TI84CalculatorDocs() {
                                 title={title}
                             />
                             <p className="text-base font-medium">{title}</p>
-                            <a
+                            <Link
                                 href={`/pdfs/ti-84-calculator-docs/${file}`}
                                 download
                                 target="_blank"
@@ -137,7 +94,7 @@ export default function TI84CalculatorDocs() {
                                 className="inline-block bg-blue-600 text-white text-sm px-4 py-2 rounded hover:bg-blue-700 transition"
                             >
                                 Download PDF
-                            </a>
+                            </Link>
                         </div>
                     ))}
                 </div>

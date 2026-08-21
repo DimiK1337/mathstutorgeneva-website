@@ -23,9 +23,9 @@ import type { Metadata } from "next";
 export const metadata: Metadata = buildMetadata({
     title: "Contact me",
     description:
-        `Contact me Email Dr Larson on: ${contactData.email} | Mobile: ${contactData.telephone} | Teams: ${contactData.email}`,
+        `Contact Dr. Larson | Email: ${contactData.email} | Mobile: ${contactData.telephone} | Teams: ${contactData.email}`,
     slug: "/contact-dr-larson",
-    keywords: ["maths tutor", "Geneva", "Nyon", "IB", "IGCSE", "SAT", "ACT", "contact", "Dr. Larson"],
+    keywords: ["Dr. William J. Larson", "maths tutor", "Geneva", "Nyon", "IB", "IGCSE", "SAT", "ACT", "contact", "Dr. Larson"],
     images: [
         {
             path: "/images/contact/rational-real-200x200.png",
@@ -35,56 +35,6 @@ export const metadata: Metadata = buildMetadata({
         },
     ]
 });
-
-// function createJsonLdGraph(baseUrl: string) {
-//     const webPageJsonLd = {
-//         "@type": "WebPage",
-//         "@id": `${baseUrl}/contact-dr-larson`,
-//         url: `${baseUrl}/contact-dr-larson`,
-//         name: metadata.title,
-//         description: metadata.description,
-//         inLanguage: "en-US",
-//         dateModified: new Date().toISOString().split("T")[0],
-//         isPartOf: {
-//             "@type": "WebSite",
-//             url: baseUrl,
-//             name: "mathstutorgeneva.ch",
-//         },
-//         breadcrumb: {
-//             "@id": `${baseUrl}/contact-dr-larson#breadcrumb`,
-//         },
-//         primaryImageOfPage: {
-//             "@type": "ImageObject",
-//             url: `${baseUrl}/images/contact/rational-real-200x200.png`,
-//             width: 200,
-//             height: 200,
-//         },
-//     };
-
-//     const breadcrumbJsonLd = {
-//         "@type": "BreadcrumbList",
-//         "@id": `${baseUrl}/contact-dr-larson#breadcrumb`,
-//         itemListElement: [
-//             {
-//                 "@type": "ListItem",
-//                 position: 1,
-//                 name: "Home",
-//                 item: `${baseUrl}/`,
-//             },
-//             {
-//                 "@type": "ListItem",
-//                 position: 2,
-//                 name: "Contact me",
-//                 item: `${baseUrl}/contact-dr-larson`,
-//             },
-//         ],
-//     };
-//     const personJsonLd = createPersonJsonLd(baseUrl);
-//     return {
-//         "@context": "https://schema.org",
-//         "@graph": [webPageJsonLd, breadcrumbJsonLd, personJsonLd],
-//     };
-// }
 
 export default function Contact() {
     const baseUrl = getBaseUrl();
@@ -99,7 +49,7 @@ export default function Contact() {
                 {/* Header */}
                 <section className="text-center space-y-4">
                     <h1 className="text-3xl font-bold text-blue-700 dark:text-blue-400">
-                        Contact Dr. W. J. Larson
+                        Contact Dr. William J. Larson
                     </h1>
                     <p>
                         To inquire about tutoring, please contact me via email, phone, or Teams.

@@ -16,7 +16,7 @@ interface NavItem {
 
 const navigation: NavItem[] = [
 	{ name: "Home", href: "/" },
-	{ name: "About Dr Larson", href: "/about-dr-larson-maths-tutor" },
+	{ name: "About Dr. Larson", href: "/about-dr-larson-maths-tutor" },
 	{ name: "How I Tutor", href: "/how-i-tutor" },
 	{ name: "SAT Math", href: "/sat-math" },
 	{ name: "Testimonials", href: "/testimonials" },

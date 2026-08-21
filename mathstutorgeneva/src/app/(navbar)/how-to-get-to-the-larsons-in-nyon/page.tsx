@@ -5,7 +5,7 @@ import Image from "next/image";
 import { getBaseUrl } from "@/lib/getBaseUrl";
 import { buildMetadata } from "@/lib/metadataBuilder";
 import { createJsonLdGraph } from "@/lib/createJsonLdGraph";
-//import createPersonJsonLd from "@/lib/createPersonJsonLd";
+
 
 import type { Metadata } from "next";
 export const metadata: Metadata = buildMetadata({
@@ -28,70 +28,6 @@ export const metadata: Metadata = buildMetadata({
     ],
 });
 
-// ld+json
-// function createJsonLdGraph(baseUrl: string) {
-//     const webPageJsonLd = {
-//         "@type": "WebPage",
-//         "@id": `${baseUrl}/how-to-get-to-the-larsons-in-nyon`,
-//         url: `${baseUrl}/how-to-get-to-the-larsons-in-nyon`,
-//         name: "How to get to the Larsons’ in Nyon",
-//         description: "How to get to the Larsons' in Nyon",
-//         inLanguage: "en-US",
-//         dateModified: new Date().toISOString().split("T")[0],
-//         isPartOf: {
-//             "@type": "WebSite",
-//             url: baseUrl,
-//             name: "mathstutorgeneva.ch",
-//         },
-//         breadcrumb: {
-//             "@id": `${baseUrl}/how-to-get-to-the-larsons-in-nyon#breadcrumb`,
-//         },
-//     };
-
-//     const breadcrumbJsonLd = {
-//         "@type": "BreadcrumbList",
-//         "@id": `${baseUrl}/how-to-get-to-the-larsons-in-nyon#breadcrumb`,
-//         itemListElement: [
-//             {
-//                 "@type": "ListItem",
-//                 position: 1,
-//                 name: "Home",
-//                 item: `${baseUrl}/`,
-//             },
-//             {
-//                 "@type": "ListItem",
-//                 position: 2,
-//                 name: "How to get to the Larsons’ in Nyon",
-//                 item: `${baseUrl}/how-to-get-to-the-larsons-in-nyon`,
-//             },
-//         ],
-//     };
-//     const personJsonLd = createPersonJsonLd(baseUrl);
-//     return {
-//         "@context": "https://schema.org",
-//         "@graph": [webPageJsonLd, breadcrumbJsonLd, personJsonLd],
-//     };
-// }
-
-
-// type ClickableImageProps = {
-//     src: string;
-//     alt: string;
-//     width: number;
-//     height: number;
-// }
-// function ClickableImage(props: ClickableImageProps) {
-//     const { src, alt, width, height } = props;
-//     return (
-//         <Image
-//             src={src}
-//             alt={alt}
-//             width={width}
-//             height={height}
-//             className="mx-auto rounded-lg shadow-md transition-transform hover:scale-105"
-//         />
-//     )
-// }
 
 export default function Location() {
     const baseUrl = getBaseUrl();

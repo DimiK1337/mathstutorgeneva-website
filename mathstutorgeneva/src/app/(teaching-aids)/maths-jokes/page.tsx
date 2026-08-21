@@ -11,55 +11,11 @@ import TeachingAidsBtn from "@/components/TeachingAidsBtn";
 import type { Metadata } from "next";
 export const metadata: Metadata = buildMetadata({
     title: "Ten commandments of Mathematics",
-    description: "Dr Larson's Ten Commandments for learning maths",
+    description: "Dr. Larson's Ten Commandments for learning maths",
     slug: "/maths-jokes",
-    keywords: ["maths tutor", "Geneva", "Nyon", "IB", "IGCSE", "SAT", "ACT", "jokes", "Dr. Larson"],
+    keywords: ["Dr. William J. Larson", "maths tutor", "Geneva", "Nyon", "IB", "IGCSE", "SAT", "ACT", "jokes", "Dr. Larson"],
     images: [],
 });
-
-// function createJsonLdGraph(baseUrl: string) {
-//     const webPageJsonLd = {
-//         "@type": "WebPage",
-//         "@id": `${baseUrl}/maths-jokes`,
-//         url: `${baseUrl}/maths-jokes`,
-//         name: metadata.title,
-//         description: metadata.description,
-//         inLanguage: "en-US",
-//         dateModified: new Date().toISOString().split("T")[0],
-//         isPartOf: {
-//             "@type": "WebSite",
-//             url: baseUrl,
-//             name: "mathstutorgeneva.ch",
-//         },
-//         breadcrumb: {
-//             "@id": `${baseUrl}/maths-jokes#breadcrumb`,
-//         },
-//     };
-
-//     const breadcrumbJsonLd = {
-//         "@type": "BreadcrumbList",
-//         "@id": `${baseUrl}/maths-jokes#breadcrumb`,
-//         itemListElement: [
-//             {
-//                 "@type": "ListItem",
-//                 position: 1,
-//                 name: "Home",
-//                 item: `${baseUrl}/`,
-//             },
-//             {
-//                 "@type": "ListItem",
-//                 position: 2,
-//                 name: "Ten commandments of Mathematics",
-//                 item: `${baseUrl}/maths-jokes`,
-//             },
-//         ],
-//     };
-//     const personJsonLd = createPersonJsonLd(baseUrl);
-//     return {
-//         "@context": "https://schema.org",
-//         "@graph": [webPageJsonLd, breadcrumbJsonLd, personJsonLd],
-//     };
-// }
 
 const commandments = [
     "Thou shalt read Thy problem.",

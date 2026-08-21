@@ -1,6 +1,8 @@
 //src/app/(teaching-aids)/handouts/ib-hl-questions/page.tsx
 
 import React from "react";
+import Link from "next/link";
+
 import { FaRegFilePdf } from "react-icons/fa";
 
 // lib
@@ -20,56 +22,6 @@ export const metadata: Metadata = buildMetadata({
     keywords: ["maths tutor", "Geneva", "Nyon", "IB", "handouts", "HL", "Dr. Larson"],
     images: [],
 });
-
-// function createJsonLdGraph(baseUrl: string) {
-//     const webPageJsonLd = {
-//         "@type": "WebPage",
-//         "@id": `${baseUrl}/handouts/ib-hl-questions`,
-//         url: `${baseUrl}/handouts/ib-hl-questions`,
-//         name: metadata.title,
-//         description: metadata.description,
-//         inLanguage: "en-US",
-//         dateModified: new Date().toISOString().split("T")[0],
-//         isPartOf: {
-//             "@type": "WebSite",
-//             url: baseUrl,
-//             name: "mathstutorgeneva.ch",
-//         },
-//         breadcrumb: {
-//             "@id": `${baseUrl}/handouts/ib-hl-questions#breadcrumb`,
-//         },
-//     };
-
-//     const breadcrumbJsonLd = {
-//         "@type": "BreadcrumbList",
-//         "@id": `${baseUrl}/handouts/ib-hl-questions#breadcrumb`,
-//         itemListElement: [
-//             {
-//                 "@type": "ListItem",
-//                 position: 1,
-//                 name: "Home",
-//                 item: `${baseUrl}/`,
-//             },
-//             {
-//                 "@type": "ListItem",
-//                 position: 2,
-//                 name: "General handouts",
-//                 item: `${baseUrl}/handouts/`,
-//             },
-//             {
-//                 "@type": "ListItem",
-//                 position: 3,
-//                 name: "IB HL questions",
-//                 item: `${baseUrl}/handouts/ib-hl-questions`,
-//             },
-//         ],
-//     };
-//     const personJsonLd = createPersonJsonLd(baseUrl);
-//     return {
-//         "@context": "https://schema.org",
-//         "@graph": [webPageJsonLd, breadcrumbJsonLd, personJsonLd],
-//     };
-// }
 
 
 const pdfs = [
@@ -121,14 +73,14 @@ export default function IBHLQuestions() {
                         <div key={title} className="flex items-center space-x-2">
                             <FaRegFilePdf className="text-red-600" />
                             {file ? (
-                                <a
+                                <Link
                                     href={`/pdfs/handouts/hl/${file}`}
                                     target="_blank"
                                     rel="noopener noreferrer"
                                     className="text-blue-700 hover:underline text-sm"
                                 >
                                     {title}
-                                </a>
+                                </Link>
                             ) : (
                                 <span className="text-gray-400 text-sm italic">
                                     {title} (coming soon)
