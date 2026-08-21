@@ -107,14 +107,14 @@ export default function Fees() {
                     </h1>
                     <p className="font-semibold">On January 1, 2023 my rates go up as follows:</p>
                     <p>
-                        If the student comes to me or I tutor online, my fee is{" "}
-                        <span className="font-medium">170 CHF per hour</span>, so{" "}
-                        <span className="font-medium">340 CHF for a 2-hour lesson</span>.
-                    </p>
-                    <p>
                         If I go to the student, I charge{" "}
                         <span className="font-medium">250 CHF per hour</span>, so{" "}
                         <span className="font-medium">500 CHF for a 2-hour lesson</span>.
+                    </p>
+                    <p>
+                        If the student comes to me or I tutor online, my fee is{" "}
+                        <span className="font-medium">170 CHF per hour.</span>{" "}
+                        <span className="font-medium">Then I am flexible about how long the lesson needs to be.</span>.
                     </p>
                 </section>
 
