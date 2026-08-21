@@ -130,6 +130,7 @@ export default function Testimonials() {
                     const data = testimonialsData[year];
 
                     // Type guard: ensure it's not the _order key
+                    // TODO: Set a message in case there's an error. Can I do this without useState?
                     if (!data || !('testimonials' in data)) return null;
 
                     const { intro, testimonials } = data as YearTestimonials;

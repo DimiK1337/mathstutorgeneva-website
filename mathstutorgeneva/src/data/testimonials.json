@@ -1,9 +1,39 @@
 {
     "_order": [
+        "2026",
+        "2025",
         "2023-2024",
         "2022",
         "2021 & Earlier"
     ],
+    "2026": {
+        "intro": "",
+        "testimonials": [
+            {
+                "testimonial": "Great math tutor, he explains concepts in a way which makes it easier for me to grasp the concept in my mind. I would definitely recommend him for anyone interested in improving their math skills.",
+                "name": "S, a tutee"
+            }
+        ]
+
+    },
+    "2025": {
+        "intro": "",
+        "testimonials": [
+            {
+                "testimonial": "She got excellent grades in her Maths test, so thank you very much for your help, it is clearly helping.",
+                "name": "Andy W., father of a tutee"
+            },
+            {
+                "testimonial": "Dear Professor Larson,\n\nI wanted to sincerely thank you for the invaluable support you’ve given Anita in her math studies.\n\nYour deep knowledge, clear explanations, and thoughtful guidance have been incredibly helpful to her throughout this academic year. We are especially grateful for your continued dedication, even in face of recent health challenges—it has meant a great deal to us.\n\nWishing you all the very best always, and once again, thank you for everything.\n\nVery warmly 🙌🙏🌸💓🥰✨",
+                "name": "Cecilia I., mother of Anita"
+            },
+            {
+                "testimonial": "Dear Dr Larson, wishing you a a happy, prosperous and healthy New 2025! I cannot thank you enough for all your kind support to Samya in getting his confidence back in HL AA Maths. Thank you so much for your thoughtful and inspiring gift to Samya - he wa so elated. Thank you again for everything 🙏🙂",
+                "name": "Mainak K., father of Samya"
+            }
+        ]
+
+    },
     "2023-2024": {
         "intro": "",
         "testimonials": [
@@ -79,8 +109,12 @@
                 "name": "G, mother of tutee"
             },
             {
-                "testimonial": "I want to thank you for all your help. In my IGCSE results I have managed to get a B in maths! In fact I got 79 points – which is only one point away from an A!  From getting two Cs and a D in my Mock to nearly getting an A is all thanks to your amazing tutoring!",
+                "testimonial": "I want to thank you for all your help. In my IGCSE results I have managed to get a B in maths! In fact I got 79 points – which is only one point away from an A! From getting two Cs and a D in my Mock to nearly getting an A is all thanks to your amazing tutoring!",
                 "name": "G, a tutee"
+            },
+            {   
+                "testimonial": "Dear Dr. Larson,\n\nWith this letter we would like to thank you for the fantastic support you provided to our son Nicholas over the last years.\n\nYour tutoring, the energy you put into this and what you care about your students makes you a role model of a teacher.\n\nNicholas came to you with shaken confidence as his current teacher seemingly did not care much about students that had not allowed to attend accelerated advance classes. From our own experience, we know how important a good math teacher is at this stage of life.\n\nYou managed to give Nicholas his confidence back, trained him consistently with all your experience and lightened the spark within him for mathematics.\n\nThis is wonderful work from you and we owe you a lot for it. You will be pleased to hear how well Nicholas did in the final IB exam and you were an important piece in this achievement.\n\nWe also hope that you despite your official retirement organise regular little tours. I (Bolko), may, if I am around, join you from time to time.\n\nAgain, a big thank you to you!\n\nBest wishes,\nBolko Hohaus &\nAlexandra Brown",
+                "name": "Bolko H. & Alexandra B., parents of a tutee"
             }
         ]
     },
