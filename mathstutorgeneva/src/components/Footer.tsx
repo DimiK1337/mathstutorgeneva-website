@@ -1,6 +1,8 @@
+//src/components/Footer.tsx
+
 import ContactLink from "@/components/ContactLink";
 
-import rawContactData from "@/data/contact_info.json";
+import rawContactData from "@/data/contactInfo.json";
 
 type ContactData = {
     email: string;

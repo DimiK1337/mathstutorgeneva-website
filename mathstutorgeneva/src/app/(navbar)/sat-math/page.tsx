@@ -3,20 +3,21 @@ import React from "react";
 // lib
 import { getBaseUrl } from "@/lib/getBaseUrl";
 import { buildMetadata } from "@/lib/metadataBuilder";
+import { createJsonLdGraph } from "@/lib/createJsonLdGraph";
 
 import type { Metadata } from "next";
-
 export const metadata: Metadata = buildMetadata({
-    title: "SAT Math Tutor – Dr W. J. Larson",
+    title: "SAT Math",
     description:
-        "Expert SAT Math preparation in Geneva and Nyon by Dr W. J. Larson – covering algebra, advanced math, data analysis, geometry and trigonometry.",
+        "Expert SAT Math preparation in Geneva and Nyon by Dr. William. J. Larson – covering algebra, advanced math, data analysis, geometry and trigonometry.",
     slug: "/sat-math",
     keywords: [
         "SAT math tutor",
         "Geneva",
         "Nyon",
         "private tutor",
-        "Dr W. J. Larson",
+        "Dr. William. J. Larson",
+        "Dr. Larson",
         "SAT preparation",
         "digital SAT",
         "Bluebook",
@@ -26,77 +27,57 @@ export const metadata: Metadata = buildMetadata({
 
 // ld+json
 
-function createJsonLdGraph(baseUrl: string) {
-    const webPageJsonLd = {
-        "@type": "WebPage",
-        "@id": `${baseUrl}/sat-math`,
-        url: `${baseUrl}/sat-math`,
-        name: "SAT Math Tutor – Dr. W. J. Larson in Nyon, Switzerland",
-        description:
-            "SAT Math preparation covering algebra, advanced math, problem-solving and data analysis, geometry and trigonometry.",
-        inLanguage: "en-US",
-        dateModified: new Date().toISOString().split("T")[0],
-        isPartOf: {
-            "@type": "WebSite",
-            url: baseUrl,
-            name: "mathstutorgeneva.ch",
-        },
-        // TODO: Find image to use (perhaps just Dr. Larson)
-        primaryImageOfPage: {
-            "@type": "ImageObject",
-            url: "",
-            width: "",
-            height: "",
-        },
-        breadcrumb: {
-            "@id": `${baseUrl}/sat-math#breadcrumb`,
-        },
-    };
+// function createJsonLdGraph(baseUrl: string) {
+//     const webPageJsonLd = {
+//         "@type": "WebPage",
+//         "@id": `${baseUrl}/sat-math`,
+//         url: `${baseUrl}/sat-math`,
+//         name: metadata.title,
+//         description: metadata.description,
+//         inLanguage: "en-US",
+//         dateModified: new Date().toISOString().split("T")[0],
+//         isPartOf: {
+//             "@type": "WebSite",
+//             url: baseUrl,
+//             name: "mathstutorgeneva.ch",
+//         },
+//         // TODO: Find image to use (perhaps just Dr. Larson)
+//         primaryImageOfPage: {
+//             "@type": "ImageObject",
+//             url: "",
+//             width: "",
+//             height: "",
+//         },
+//         breadcrumb: {
+//             "@id": `${baseUrl}/sat-math#breadcrumb`,
+//         },
+//     };
 
-    const breadcrumbJsonLd = {
-        "@type": "BreadcrumbList",
-        "@id": `${baseUrl}/sat-math#breadcrumb`,
-        itemListElement: [
-            {
-                "@type": "ListItem",
-                position: 1,
-                name: "Home",
-                item: `${baseUrl}/`,
-            },
-            {
-                "@type": "ListItem",
-                position: 2,
-                name: "SAT Math",
-                item: `${baseUrl}/sat-math`,
-            },
-        ],
-    };
+//     const breadcrumbJsonLd = {
+//         "@type": "BreadcrumbList",
+//         "@id": `${baseUrl}/sat-math#breadcrumb`,
+//         itemListElement: [
+//             {
+//                 "@type": "ListItem",
+//                 position: 1,
+//                 name: "Home",
+//                 item: `${baseUrl}/`,
+//             },
+//             {
+//                 "@type": "ListItem",
+//                 position: 2,
+//                 name: "SAT Math",
+//                 item: `${baseUrl}/sat-math`,
+//             },
+//         ],
+//     };
+//     const personJsonLd = createPersonJsonLd(baseUrl);
+//     return {
+//         "@context": "https://schema.org",
+//         "@graph": [webPageJsonLd, breadcrumbJsonLd, personJsonLd],
+//     };
+// }
 
-    const personJsonLd = {
-        "@type": "Person",
-        name: "Dr. W. J. Larson",
-        jobTitle: "Private Math Tutor",
-        url: `${baseUrl}/`,
-        image: `${baseUrl}/images/about-dr-larson-maths-tutor/cropped-bill2-200x200.jpg`,
-        worksFor: [
-            {
-                "@type": "Organization",
-                name: "CERN",
-                url: "https://home.cern/",
-            },
-            {
-                "@type": "EducationalOrganization",
-                name: "International School of Geneva – La Grande Boissière",
-                url: "https://www.ecolint.ch/our-campuses/la-grande-boissiere",
-            },
-        ],
-    };
-
-    return {
-        "@context": "https://schema.org",
-        "@graph": [webPageJsonLd, breadcrumbJsonLd, personJsonLd],
-    };
-}
 
 // Should probably be moved to data folder
 const satTopics = [
@@ -146,7 +127,7 @@ const bluebookUrl = "https://bluebook.app.collegeboard.org/";
 
 export default function SATMath() {
     const baseUrl = getBaseUrl();
-    const jsonLd = createJsonLdGraph(baseUrl);
+    const jsonLd = createJsonLdGraph(baseUrl, metadata);
 
     return (
         <>

@@ -1,7 +1,11 @@
 import React from "react";
+
+import { FaRegFilePdf } from "react-icons/fa"; // https://react-icons.github.io/react-icons/icons?name=fa
+
+// lib
 import { getBaseUrl } from "@/lib/getBaseUrl";
 import { buildMetadata } from "@/lib/metadataBuilder";
-import { FaRegFilePdf } from "react-icons/fa"; // https://react-icons.github.io/react-icons/icons?name=fa
+import { createJsonLdGraph } from "@/lib/createJsonLdGraph";
 
 // Custom handouts data
 import handouts from "@/data/generalHandouts.json";
@@ -27,75 +31,75 @@ export const metadata: Metadata = buildMetadata({
     images: [],
 });
 
-function createJsonLdGraph(baseUrl: string) {
-    const webPageJsonLd = {
-        "@type": "WebPage",
-        "@id": `${baseUrl}/handouts`,
-        url: `${baseUrl}/handouts`,
-        name: "General handouts",
-        description:
-            "General Handouts – Printable PDFs for exponents, functions, transformations, asymptotes, quadratics and more. Tailored support from Dr W. J. Larson.",
-        inLanguage: "en-US",
-        dateModified: new Date().toISOString().split("T")[0],
-        isPartOf: {
-            "@type": "WebSite",
-            url: baseUrl,
-            name: "mathstutorgeneva.ch",
-        },
-        breadcrumb: {
-            "@id": `${baseUrl}/handouts#breadcrumb`,
-        },
-    };
+// function createJsonLdGraph(baseUrl: string) {
+//     const webPageJsonLd = {
+//         "@type": "WebPage",
+//         "@id": `${baseUrl}/handouts`,
+//         url: `${baseUrl}/handouts`,
+//         name: "General handouts",
+//         description:
+//             "General Handouts – Printable PDFs for exponents, functions, transformations, asymptotes, quadratics and more. Tailored support from Dr W. J. Larson.",
+//         inLanguage: "en-US",
+//         dateModified: new Date().toISOString().split("T")[0],
+//         isPartOf: {
+//             "@type": "WebSite",
+//             url: baseUrl,
+//             name: "mathstutorgeneva.ch",
+//         },
+//         breadcrumb: {
+//             "@id": `${baseUrl}/handouts#breadcrumb`,
+//         },
+//     };
 
-    const breadcrumbJsonLd = {
-        "@type": "BreadcrumbList",
-        "@id": `${baseUrl}/handouts#breadcrumb`,
-        itemListElement: [
-            {
-                "@type": "ListItem",
-                position: 1,
-                name: "Home",
-                item: `${baseUrl}/`,
-            },
-            {
-                "@type": "ListItem",
-                position: 2,
-                name: "General handouts",
-                item: `${baseUrl}/handouts`,
-            },
-        ],
-    };
+//     const breadcrumbJsonLd = {
+//         "@type": "BreadcrumbList",
+//         "@id": `${baseUrl}/handouts#breadcrumb`,
+//         itemListElement: [
+//             {
+//                 "@type": "ListItem",
+//                 position: 1,
+//                 name: "Home",
+//                 item: `${baseUrl}/`,
+//             },
+//             {
+//                 "@type": "ListItem",
+//                 position: 2,
+//                 name: "General handouts",
+//                 item: `${baseUrl}/handouts`,
+//             },
+//         ],
+//     };
 
-    const personJsonLd = {
-        "@type": "Person",
-        name: "Dr. W. J. Larson",
-        jobTitle: "Private Math Tutor",
-        url: `${baseUrl}/`,
-        image: `${baseUrl}/images/about-dr-larson-maths-tutor/cropped-bill2-200x200.jpg`,
-        worksFor: [
-            {
-                "@type": "Organization",
-                name: "CERN",
-                url: "https://home.cern/",
-            },
-            {
-                "@type": "EducationalOrganization",
-                name: "International School of Geneva – La Grande Boissière",
-                url: "https://www.ecolint.ch/our-campuses/la-grande-boissiere",
-            },
-        ],
-    };
-
-    return {
-        "@context": "https://schema.org",
-        "@graph": [webPageJsonLd, breadcrumbJsonLd, personJsonLd],
-    };
-}
+//     // const personJsonLd = {
+//     //     "@type": "Person",
+//     //     name: "Dr. W. J. Larson",
+//     //     jobTitle: "Private Maths Tutor",
+//     //     url: `${baseUrl}/`,
+//     //     image: `${baseUrl}/images/about-dr-larson-maths-tutor/cropped-bill2-200x200.jpg`,
+//     //     worksFor: [
+//     //         {
+//     //             "@type": "Organization",
+//     //             name: "CERN",
+//     //             url: "https://home.cern/",
+//     //         },
+//     //         {
+//     //             "@type": "EducationalOrganization",
+//     //             name: "International School of Geneva – La Grande Boissière",
+//     //             url: "https://www.ecolint.ch/our-campuses/la-grande-boissiere",
+//     //         },
+//     //     ],
+//     // };
+//     const personJsonLd = createPersonJsonLd(baseUrl);
+//     return {
+//         "@context": "https://schema.org",
+//         "@graph": [webPageJsonLd, breadcrumbJsonLd, personJsonLd],
+//     };
+// }
 
 
 export default function GeneralHandouts() {
     const baseUrl = getBaseUrl();
-    const jsonLd = createJsonLdGraph(baseUrl);
+    const jsonLd = createJsonLdGraph(baseUrl, metadata);
     return (
         <>
             <script

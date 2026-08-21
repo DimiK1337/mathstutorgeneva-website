@@ -1,9 +1,12 @@
+//src/app/(teaching-aids)/handouts/ib-sl-questions/page.tsx
+
 import React from "react";
 import { FaRegFilePdf } from "react-icons/fa";
 
 // lib
 import { getBaseUrl } from "@/lib/getBaseUrl";
 import { buildMetadata } from "@/lib/metadataBuilder";
+import { createJsonLdGraph } from "@/lib/createJsonLdGraph";
 
 // Components
 import TeachingAidsBtn from "@/components/TeachingAidsBtn";
@@ -14,81 +17,59 @@ export const metadata: Metadata = buildMetadata({
     description:
         "IB SL Questions – SL Vectors, Trig Identities, Sequences, and Normal Distribution (2008–2014), with full mark schemes.",
     slug: "/handouts/ib-sl-questions",
-    keywords: ["math tutor", "Geneva", "Nyon", "IB", "SAT", "handouts", "SL", "Dr Larson"],
+    keywords: ["maths tutor", "Geneva", "Nyon", "IB", "handouts", "SL", "Dr. Larson"],
     images: [],
 });
 
-function createJsonLdGraph(baseUrl: string) {
-    const webPageJsonLd = {
-        "@type": "WebPage",
-        "@id": `${baseUrl}/handouts/ib-sl-questions`,
-        url: `${baseUrl}/handouts/ib-sl-questions`,
-        name: "IB SL questions",
-        description:
-            "IB SL Questions – SL Vectors, Trig Identities, Sequences, and Normal Distribution (2008–2014), with full mark schemes.",
-        inLanguage: "en-US",
-        dateModified: new Date().toISOString().split("T")[0],
-        isPartOf: {
-            "@type": "WebSite",
-            url: baseUrl,
-            name: "mathstutorgeneva.ch",
-        },
-        breadcrumb: {
-            "@id": `${baseUrl}/handouts/ib-sl-questions#breadcrumb`,
-        },
-    };
+// function createJsonLdGraph(baseUrl: string) {
+//     const webPageJsonLd = {
+//         "@type": "WebPage",
+//         "@id": `${baseUrl}/handouts/ib-sl-questions`,
+//         url: `${baseUrl}/handouts/ib-sl-questions`,
+//         name: metadata.title,
+//         description: metadata.description,
+//         inLanguage: "en-US",
+//         dateModified: new Date().toISOString().split("T")[0],
+//         isPartOf: {
+//             "@type": "WebSite",
+//             url: baseUrl,
+//             name: "mathstutorgeneva.ch",
+//         },
+//         breadcrumb: {
+//             "@id": `${baseUrl}/handouts/ib-sl-questions#breadcrumb`,
+//         },
+//     };
 
-    const breadcrumbJsonLd = {
-        "@type": "BreadcrumbList",
-        "@id": `${baseUrl}/handouts/ib-sl-questions#breadcrumb`,
-        itemListElement: [
-            {
-                "@type": "ListItem",
-                position: 1,
-                name: "Home",
-                item: `${baseUrl}/`,
-            },
-            {
-                "@type": "ListItem",
-                position: 2,
-                name: "General handouts",
-                item: `${baseUrl}/handouts/`,
-            },
-            {
-                "@type": "ListItem",
-                position: 3,
-                name: "IB SL questions",
-                item: `${baseUrl}/handouts/ib-sl-questions`,
-            },
-        ],
-    };
-
-    const personJsonLd = {
-        "@type": "Person",
-        name: "Dr. W. J. Larson",
-        jobTitle: "Private Math Tutor",
-        url: `${baseUrl}/`,
-        image: `${baseUrl}/images/about-dr-larson-maths-tutor/cropped-bill2-200x200.jpg`,
-        worksFor: [
-            {
-                "@type": "Organization",
-                name: "CERN",
-                url: "https://home.cern/",
-            },
-            {
-                "@type": "EducationalOrganization",
-                name: "International School of Geneva – La Grande Boissière",
-                url: "https://www.ecolint.ch/our-campuses/la-grande-boissiere",
-            },
-        ],
-    };
-
-    return {
-        "@context": "https://schema.org",
-        "@graph": [webPageJsonLd, breadcrumbJsonLd, personJsonLd],
-    };
-}
-
+//     const breadcrumbJsonLd = {
+//         "@type": "BreadcrumbList",
+//         "@id": `${baseUrl}/handouts/ib-sl-questions#breadcrumb`,
+//         itemListElement: [
+//             {
+//                 "@type": "ListItem",
+//                 position: 1,
+//                 name: "Home",
+//                 item: `${baseUrl}/`,
+//             },
+//             {
+//                 "@type": "ListItem",
+//                 position: 2,
+//                 name: "General handouts",
+//                 item: `${baseUrl}/handouts/`,
+//             },
+//             {
+//                 "@type": "ListItem",
+//                 position: 3,
+//                 name: "IB SL questions",
+//                 item: `${baseUrl}/handouts/ib-sl-questions`,
+//             },
+//         ],
+//     };
+//     const personJsonLd = createPersonJsonLd(baseUrl);
+//     return {
+//         "@context": "https://schema.org",
+//         "@graph": [webPageJsonLd, breadcrumbJsonLd, personJsonLd],
+//     };
+// }
 
 
 const pdfs = [
@@ -112,7 +93,7 @@ const pdfs = [
 
 export default function IBSLQuestions() {
     const baseUrl = getBaseUrl();
-    const jsonLd = createJsonLdGraph(baseUrl);
+    const jsonLd = createJsonLdGraph(baseUrl, metadata);
 
     return (
         <>

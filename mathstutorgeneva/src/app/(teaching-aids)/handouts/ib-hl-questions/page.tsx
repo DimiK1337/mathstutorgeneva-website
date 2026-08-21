@@ -1,9 +1,12 @@
+//src/app/(teaching-aids)/handouts/ib-hl-questions/page.tsx
+
 import React from "react";
 import { FaRegFilePdf } from "react-icons/fa";
 
 // lib
 import { getBaseUrl } from "@/lib/getBaseUrl";
 import { buildMetadata } from "@/lib/metadataBuilder";
+import { createJsonLdGraph } from "@/lib/createJsonLdGraph";
 
 // Components
 import TeachingAidsBtn from "@/components/TeachingAidsBtn";
@@ -14,81 +17,59 @@ export const metadata: Metadata = buildMetadata({
     description:
         "IB HL Questions – HL Sequences, Trig Identities, Induction, and other past paper topics (2008–2014), with full mark schemes.",
     slug: "/handouts/ib-hl-questions",
-    keywords: ["math tutor", "Geneva", "Nyon", "IB", "SAT", "handouts", "HL", "Dr Larson"],
+    keywords: ["maths tutor", "Geneva", "Nyon", "IB", "handouts", "HL", "Dr. Larson"],
     images: [],
 });
 
-function createJsonLdGraph(baseUrl: string) {
-    const webPageJsonLd = {
-        "@type": "WebPage",
-        "@id": `${baseUrl}/handouts/ib-hl-questions`,
-        url: `${baseUrl}/handouts/ib-hl-questions`,
-        name: "IB HL questions",
-        description:
-            "IB HL Questions – HL Sequences, Trig Identities, Induction, and other past paper topics (2008–2014), with full mark schemes.",
-        inLanguage: "en-US",
-        dateModified: new Date().toISOString().split("T")[0],
-        isPartOf: {
-            "@type": "WebSite",
-            url: baseUrl,
-            name: "mathstutorgeneva.ch",
-        },
-        breadcrumb: {
-            "@id": `${baseUrl}/handouts/ib-hl-questions#breadcrumb`,
-        },
-    };
+// function createJsonLdGraph(baseUrl: string) {
+//     const webPageJsonLd = {
+//         "@type": "WebPage",
+//         "@id": `${baseUrl}/handouts/ib-hl-questions`,
+//         url: `${baseUrl}/handouts/ib-hl-questions`,
+//         name: metadata.title,
+//         description: metadata.description,
+//         inLanguage: "en-US",
+//         dateModified: new Date().toISOString().split("T")[0],
+//         isPartOf: {
+//             "@type": "WebSite",
+//             url: baseUrl,
+//             name: "mathstutorgeneva.ch",
+//         },
+//         breadcrumb: {
+//             "@id": `${baseUrl}/handouts/ib-hl-questions#breadcrumb`,
+//         },
+//     };
 
-    const breadcrumbJsonLd = {
-        "@type": "BreadcrumbList",
-        "@id": `${baseUrl}/handouts/ib-hl-questions#breadcrumb`,
-        itemListElement: [
-            {
-                "@type": "ListItem",
-                position: 1,
-                name: "Home",
-                item: `${baseUrl}/`,
-            },
-            {
-                "@type": "ListItem",
-                position: 2,
-                name: "General handouts",
-                item: `${baseUrl}/handouts/`,
-            },
-            {
-                "@type": "ListItem",
-                position: 3,
-                name: "IB HL questions",
-                item: `${baseUrl}/handouts/ib-hl-questions`,
-            },
-        ],
-    };
-
-    const personJsonLd = {
-        "@type": "Person",
-        name: "Dr. W. J. Larson",
-        jobTitle: "Private Math Tutor",
-        url: `${baseUrl}/`,
-        image: `${baseUrl}/images/about-dr-larson-maths-tutor/cropped-bill2-200x200.jpg`,
-        worksFor: [
-            {
-                "@type": "Organization",
-                name: "CERN",
-                url: "https://home.cern/",
-            },
-            {
-                "@type": "EducationalOrganization",
-                name: "International School of Geneva – La Grande Boissière",
-                url: "https://www.ecolint.ch/our-campuses/la-grande-boissiere",
-            },
-        ],
-    };
-
-    return {
-        "@context": "https://schema.org",
-        "@graph": [webPageJsonLd, breadcrumbJsonLd, personJsonLd],
-    };
-}
-
+//     const breadcrumbJsonLd = {
+//         "@type": "BreadcrumbList",
+//         "@id": `${baseUrl}/handouts/ib-hl-questions#breadcrumb`,
+//         itemListElement: [
+//             {
+//                 "@type": "ListItem",
+//                 position: 1,
+//                 name: "Home",
+//                 item: `${baseUrl}/`,
+//             },
+//             {
+//                 "@type": "ListItem",
+//                 position: 2,
+//                 name: "General handouts",
+//                 item: `${baseUrl}/handouts/`,
+//             },
+//             {
+//                 "@type": "ListItem",
+//                 position: 3,
+//                 name: "IB HL questions",
+//                 item: `${baseUrl}/handouts/ib-hl-questions`,
+//             },
+//         ],
+//     };
+//     const personJsonLd = createPersonJsonLd(baseUrl);
+//     return {
+//         "@context": "https://schema.org",
+//         "@graph": [webPageJsonLd, breadcrumbJsonLd, personJsonLd],
+//     };
+// }
 
 
 const pdfs = [
@@ -124,7 +105,7 @@ const pdfs = [
 
 export default function IBHLQuestions() {
     const baseUrl = getBaseUrl();
-    const jsonLd = createJsonLdGraph(baseUrl);
+    const jsonLd = createJsonLdGraph(baseUrl, metadata);
 
     return (
         <>

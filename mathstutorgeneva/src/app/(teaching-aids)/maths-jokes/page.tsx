@@ -3,6 +3,7 @@ import React from "react";
 // lib
 import { getBaseUrl } from "@/lib/getBaseUrl";
 import { buildMetadata } from "@/lib/metadataBuilder";
+import { createJsonLdGraph } from "@/lib/createJsonLdGraph";
 
 // Components
 import TeachingAidsBtn from "@/components/TeachingAidsBtn";
@@ -12,73 +13,53 @@ export const metadata: Metadata = buildMetadata({
     title: "Ten commandments of Mathematics",
     description: "Dr Larson's Ten Commandments for learning maths",
     slug: "/maths-jokes",
-    keywords: ["math tutor", "Geneva", "Nyon", "IB", "SAT", "jokes", "Dr Larson"],
+    keywords: ["maths tutor", "Geneva", "Nyon", "IB", "IGCSE", "SAT", "ACT", "jokes", "Dr. Larson"],
     images: [],
 });
 
-function createJsonLdGraph(baseUrl: string) {
-    const webPageJsonLd = {
-        "@type": "WebPage",
-        "@id": `${baseUrl}/maths-jokes`,
-        url: `${baseUrl}/maths-jokes`,
-        name: "Ten commandments of Mathematics",
-        description: "Dr Larson's Ten Commandments for learning maths",
-        inLanguage: "en-US",
-        dateModified: new Date().toISOString().split("T")[0],
-        isPartOf: {
-            "@type": "WebSite",
-            url: baseUrl,
-            name: "mathstutorgeneva.ch",
-        },
-        breadcrumb: {
-            "@id": `${baseUrl}/maths-jokes#breadcrumb`,
-        },
-    };
+// function createJsonLdGraph(baseUrl: string) {
+//     const webPageJsonLd = {
+//         "@type": "WebPage",
+//         "@id": `${baseUrl}/maths-jokes`,
+//         url: `${baseUrl}/maths-jokes`,
+//         name: metadata.title,
+//         description: metadata.description,
+//         inLanguage: "en-US",
+//         dateModified: new Date().toISOString().split("T")[0],
+//         isPartOf: {
+//             "@type": "WebSite",
+//             url: baseUrl,
+//             name: "mathstutorgeneva.ch",
+//         },
+//         breadcrumb: {
+//             "@id": `${baseUrl}/maths-jokes#breadcrumb`,
+//         },
+//     };
 
-    const breadcrumbJsonLd = {
-        "@type": "BreadcrumbList",
-        "@id": `${baseUrl}/maths-jokes#breadcrumb`,
-        itemListElement: [
-            {
-                "@type": "ListItem",
-                position: 1,
-                name: "Home",
-                item: `${baseUrl}/`,
-            },
-            {
-                "@type": "ListItem",
-                position: 2,
-                name: "Ten commandments of Mathematics",
-                item: `${baseUrl}/maths-jokes`,
-            },
-        ],
-    };
-
-    const personJsonLd = {
-        "@type": "Person",
-        name: "Dr. W. J. Larson",
-        jobTitle: "Private Math Tutor",
-        url: `${baseUrl}/`,
-        image: `${baseUrl}/images/about-dr-larson-maths-tutor/cropped-bill2-200x200.jpg`,
-        worksFor: [
-            {
-                "@type": "Organization",
-                name: "CERN",
-                url: "https://home.cern/",
-            },
-            {
-                "@type": "EducationalOrganization",
-                name: "International School of Geneva – La Grande Boissière",
-                url: "https://www.ecolint.ch/our-campuses/la-grande-boissiere",
-            },
-        ],
-    };
-
-    return {
-        "@context": "https://schema.org",
-        "@graph": [webPageJsonLd, breadcrumbJsonLd, personJsonLd],
-    };
-}
+//     const breadcrumbJsonLd = {
+//         "@type": "BreadcrumbList",
+//         "@id": `${baseUrl}/maths-jokes#breadcrumb`,
+//         itemListElement: [
+//             {
+//                 "@type": "ListItem",
+//                 position: 1,
+//                 name: "Home",
+//                 item: `${baseUrl}/`,
+//             },
+//             {
+//                 "@type": "ListItem",
+//                 position: 2,
+//                 name: "Ten commandments of Mathematics",
+//                 item: `${baseUrl}/maths-jokes`,
+//             },
+//         ],
+//     };
+//     const personJsonLd = createPersonJsonLd(baseUrl);
+//     return {
+//         "@context": "https://schema.org",
+//         "@graph": [webPageJsonLd, breadcrumbJsonLd, personJsonLd],
+//     };
+// }
 
 const commandments = [
     "Thou shalt read Thy problem.",
@@ -95,7 +76,7 @@ const commandments = [
 
 export default function MathsCommandments() {
     const baseUrl = getBaseUrl();
-    const jsonLd = createJsonLdGraph(baseUrl);
+    const jsonLd = createJsonLdGraph(baseUrl, metadata);
     return (
         <>
         <script

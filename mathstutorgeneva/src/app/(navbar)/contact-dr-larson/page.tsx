@@ -8,8 +8,9 @@ import ContactLink from "@/components/ContactLink";
 // lib
 import { getBaseUrl } from "@/lib/getBaseUrl";
 import { buildMetadata } from "@/lib/metadataBuilder";
+import { createJsonLdGraph } from "@/lib/createJsonLdGraph";
 
-import rawContactData from "@/data/contact_info.json";
+import rawContactData from "@/data/contactInfo.json";
 
 type ContactData = {
     email: string;
@@ -24,7 +25,7 @@ export const metadata: Metadata = buildMetadata({
     description:
         `Contact me Email Dr Larson on: ${contactData.email} | Mobile: ${contactData.telephone} | Teams: ${contactData.email}`,
     slug: "/contact-dr-larson",
-    keywords: ["math tutor", "Geneva", "Nyon", "IB", "SAT", "contact", "Dr Larson"],
+    keywords: ["maths tutor", "Geneva", "Nyon", "IB", "IGCSE", "SAT", "ACT", "contact", "Dr. Larson"],
     images: [
         {
             path: "/images/contact/rational-real-200x200.png",
@@ -34,82 +35,60 @@ export const metadata: Metadata = buildMetadata({
         },
     ]
 });
-function createJsonLdGraph(baseUrl: string) {
-    const webPageJsonLd = {
-        "@type": "WebPage",
-        "@id": `${baseUrl}/contact`,
-        url: `${baseUrl}/contact`,
-        name: metadata.title,
-        description: metadata.description,
-        inLanguage: "en-US",
-        dateModified: new Date().toISOString().split("T")[0],
-        isPartOf: {
-            "@type": "WebSite",
-            url: baseUrl,
-            name: "mathstutorgeneva.ch",
-        },
-        breadcrumb: {
-            "@id": `${baseUrl}/contact#breadcrumb`,
-        },
-        primaryImageOfPage: {
-            "@type": "ImageObject",
-            url: `${baseUrl}/images/contact/rational-real-200x200.png`,
-            width: 200,
-            height: 200,
-        },
-    };
 
-    const breadcrumbJsonLd = {
-        "@type": "BreadcrumbList",
-        "@id": `${baseUrl}/contact#breadcrumb`,
-        itemListElement: [
-            {
-                "@type": "ListItem",
-                position: 1,
-                name: "Home",
-                item: `${baseUrl}/`,
-            },
-            {
-                "@type": "ListItem",
-                position: 2,
-                name: "Contact me",
-                item: `${baseUrl}/contact`,
-            },
-        ],
-    };
+// function createJsonLdGraph(baseUrl: string) {
+//     const webPageJsonLd = {
+//         "@type": "WebPage",
+//         "@id": `${baseUrl}/contact-dr-larson`,
+//         url: `${baseUrl}/contact-dr-larson`,
+//         name: metadata.title,
+//         description: metadata.description,
+//         inLanguage: "en-US",
+//         dateModified: new Date().toISOString().split("T")[0],
+//         isPartOf: {
+//             "@type": "WebSite",
+//             url: baseUrl,
+//             name: "mathstutorgeneva.ch",
+//         },
+//         breadcrumb: {
+//             "@id": `${baseUrl}/contact-dr-larson#breadcrumb`,
+//         },
+//         primaryImageOfPage: {
+//             "@type": "ImageObject",
+//             url: `${baseUrl}/images/contact/rational-real-200x200.png`,
+//             width: 200,
+//             height: 200,
+//         },
+//     };
 
-    const personJsonLd = {
-        "@type": "Person",
-        name: "Dr. W. J. Larson",
-        jobTitle: "Private Math Tutor",
-        url: `${baseUrl}/`,
-        image: `${baseUrl}/images/about-dr-larson-maths-tutor/cropped-bill2-200x200.jpg`,
-        worksFor: [
-            {
-                "@type": "Organization",
-                name: "CERN",
-                url: "https://home.cern/",
-            },
-            {
-                "@type": "EducationalOrganization",
-                name: "International School of Geneva – La Grande Boissière",
-                url: "https://www.ecolint.ch/our-campuses/la-grande-boissiere",
-            },
-        ],
-    };
-
-    return {
-        "@context": "https://schema.org",
-        "@graph": [webPageJsonLd, breadcrumbJsonLd, personJsonLd],
-    };
-}
-
-
-
+//     const breadcrumbJsonLd = {
+//         "@type": "BreadcrumbList",
+//         "@id": `${baseUrl}/contact-dr-larson#breadcrumb`,
+//         itemListElement: [
+//             {
+//                 "@type": "ListItem",
+//                 position: 1,
+//                 name: "Home",
+//                 item: `${baseUrl}/`,
+//             },
+//             {
+//                 "@type": "ListItem",
+//                 position: 2,
+//                 name: "Contact me",
+//                 item: `${baseUrl}/contact-dr-larson`,
+//             },
+//         ],
+//     };
+//     const personJsonLd = createPersonJsonLd(baseUrl);
+//     return {
+//         "@context": "https://schema.org",
+//         "@graph": [webPageJsonLd, breadcrumbJsonLd, personJsonLd],
+//     };
+// }
 
 export default function Contact() {
     const baseUrl = getBaseUrl();
-    const jsonLd = createJsonLdGraph(baseUrl);
+    const jsonLd = createJsonLdGraph(baseUrl, metadata);
     return (
         <>
             <script

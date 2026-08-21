@@ -5,93 +5,75 @@ import Link from 'next/link';
 // lib
 import { getBaseUrl } from "@/lib/getBaseUrl";
 import { buildMetadata } from "@/lib/metadataBuilder";
+// import createPersonJsonLd from '@/lib/createPersonJsonLd';
+import { createJsonLdGraph } from '@/lib/createJsonLdGraph';
 
+// metadata
 import type { Metadata } from 'next';
 export const metadata: Metadata = buildMetadata({
-    title: "About Dr Larson, private math tutor in Geneva and Nyon.",
+    title: "About Dr Larson, private maths tutor in Geneva and Nyon.",
     description:
         "For many years Dr Larson taught maths for the IB Diploma Program, IGCSE and US high school syllabuses (grades 7 to 13) at the Ecole Internationale in Geneva.",
     slug: "/about-dr-larson-maths-tutor",
-    keywords: ["math tutor", "Geneva", "Nyon", "IB", "SAT", "Dr Larson"],
+    keywords: ["maths tutor", "Geneva", "Nyon", "IB", "SAT", "ACT", "Dr. Larson"],
     images: []
 });
 
 // ld+json
-function createJsonLdGraph(baseUrl: string) {
-    const webPageJsonLd = {
-        "@type": "WebPage",
-        "@id": `${baseUrl}/about-dr-larson-maths-tutor`,
-        url: `${baseUrl}/about-dr-larson-maths-tutor`,
-        name: "About Dr Larson, private math tutor in Geneva and Nyon.",
-        description:
-            "For many years Dr Larson taught maths for the IB Diploma Program, IGCSE and US high school syllabuses (grades 7 to 13) at the Ecole Internationale in Geneva.",
-        inLanguage: "en-US",
-        dateModified: new Date().toISOString().split("T")[0],
-        isPartOf: {
-            "@type": "WebSite",
-            url: baseUrl,
-            name: "mathstutorgeneva.ch",
-        },
-        primaryImageOfPage: {
-            "@type": "ImageObject",
-            url: `${baseUrl}/images/about-dr-larson-maths-tutor/cropped-bill2-200x200.jpg`,
-            width: 200,
-            height: 200,
-        },
-        breadcrumb: {
-            "@id": `${baseUrl}/how-to-get-to-the-larsons-in-nyon#breadcrumb`,
-        },
-    };
+// function createJsonLdGraph(baseUrl: string) {
+//     const webPageJsonLd = {
+//         "@type": "WebPage",
+//         "@id": `${baseUrl}/about-dr-larson-maths-tutor`,
+//         url: `${baseUrl}/about-dr-larson-maths-tutor`,
+//         name: metadata.title,
+//         description: metadata.description,
+//         inLanguage: "en-US",
+//         dateModified: new Date().toISOString().split("T")[0],
+//         isPartOf: {
+//             "@type": "WebSite",
+//             url: baseUrl,
+//             name: "mathstutorgeneva.ch",
+//         },
+//         primaryImageOfPage: {
+//             "@type": "ImageObject",
+//             url: `${baseUrl}/images/about-dr-larson-maths-tutor/cropped-bill2-200x200.jpg`,
+//             width: 200,
+//             height: 200,
+//         },
+//         breadcrumb: {
+//             "@id": `${baseUrl}/about-dr-larson-maths-tutor#breadcrumb`,
+//         },
+//     };
 
-    const breadcrumbJsonLd = {
-        "@type": "BreadcrumbList",
-        "@id": `${baseUrl}/how-to-get-to-the-larsons-in-nyon#breadcrumb`,
-        itemListElement: [
-            {
-                "@type": "ListItem",
-                position: 1,
-                name: "Home",
-                item: `${baseUrl}/`,
-            },
-            {
-                "@type": "ListItem",
-                position: 2,
-                name: "About Dr Larson",
-                item: `${baseUrl}/about-dr-larson-maths-tutor`,
-            },
-        ],
-    };
-
-    const personJsonLd = {
-        "@type": "Person",
-        name: "Dr. W. J. Larson",
-        jobTitle: "Private Math Tutor",
-        url: `${baseUrl}/`,
-        image: `${baseUrl}/images/about-dr-larson-maths-tutor/cropped-bill2-200x200.jpg`,
-        worksFor: [
-            {
-                "@type": "Organization",
-                name: "CERN",
-                url: "https://home.cern/",
-            },
-            {
-                "@type": "EducationalOrganization",
-                name: "International School of Geneva – La Grande Boissière",
-                url: "https://www.ecolint.ch/our-campuses/la-grande-boissiere",
-            },
-        ],
-    };
-
-    return {
-        "@context": "https://schema.org",
-        "@graph": [webPageJsonLd, breadcrumbJsonLd, personJsonLd],
-    };
-}
+//     const breadcrumbJsonLd = {
+//         "@type": "BreadcrumbList",
+//         "@id": `${baseUrl}/about-dr-larson-maths-tutor#breadcrumb`,
+//         itemListElement: [
+//             {
+//                 "@type": "ListItem",
+//                 position: 1,
+//                 name: "Home",
+//                 item: `${baseUrl}/`,
+//             },
+//             {
+//                 "@type": "ListItem",
+//                 position: 2,
+//                 name: "About Dr Larson",
+//                 item: `${baseUrl}/about-dr-larson-maths-tutor`,
+//             },
+//         ],
+//     };
+//     const personJsonLd = createPersonJsonLd(baseUrl);
+//     return {
+//         "@context": "https://schema.org",
+//         "@graph": [webPageJsonLd, breadcrumbJsonLd, personJsonLd],
+//     };
+// }
 
 
 export default function AboutDrLarsonMathsTutor() {
     const baseUrl = getBaseUrl();
-    const jsonLd = createJsonLdGraph(baseUrl);
+    const jsonLd = createJsonLdGraph(baseUrl, metadata);
     const books = [
         {
             filename: 'Common-Core-IBID-Cover-308x400.jpg',
@@ -142,7 +124,7 @@ export default function AboutDrLarsonMathsTutor() {
                         About Dr. W. J. Larson
                     </h1>
                     <p className="text-lg text-gray-600 dark:text-gray-300">
-                        Private Math Tutor in Geneva and Nyon
+                        Private Maths Tutor in Geneva and Nyon
                     </p>
                 </section>
 
@@ -159,7 +141,7 @@ export default function AboutDrLarsonMathsTutor() {
                 <section>
                     <h2 className="text-2xl font-semibold mb-4">Teaching Experience</h2>
                     <p>
-                        Over the past 25 years, Dr. Larson has taught mathematics, physics, astronomy, and SAT preparation at middle school, high school, and first-year university levels. His experience includes teaching the IB Diploma Program, IGCSE, and US high school syllabuses, primarily in the mathematics department at the{' '}
+                        Over the past 30 years, Dr. Larson has taught maths, physics, astronomy, and SAT preparation at middle school, high school, and first-year university levels. His experience includes teaching the IB Diploma Program, IGCSE, and US high school syllabuses, primarily in the maths department at the{' '}
                         <a href="https://www.ecolint.ch/our-campuses/la-grande-boissiere" className="text-blue-700 underline dark:text-blue-400" target="_blank" rel="noopener noreferrer">
                             La Grande Boissière campus of the International School of Geneva
                         </a>.
@@ -178,7 +160,7 @@ export default function AboutDrLarsonMathsTutor() {
                 {/* Publications */}
                 <section>
                     <h2 className="text-2xl font-semibold mb-4">Publications</h2>
-                    <p>In 2019, Dr. Larson authored five mathematics textbooks:</p>
+                    <p>In 2019, Dr. Larson authored five maths textbooks:</p>
 
                     <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-6 mt-6">
                         {books.map(({ filename, caption, url }) => (
