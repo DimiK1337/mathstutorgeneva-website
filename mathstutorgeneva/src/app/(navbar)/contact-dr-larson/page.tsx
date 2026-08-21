@@ -2,17 +2,27 @@ import React from "react";
 
 import Image from "next/image";
 
+// Custom Components
+import ContactLink from "@/components/ContactLink";
+
 // lib
 import { getBaseUrl } from "@/lib/getBaseUrl";
 import { buildMetadata } from "@/lib/metadataBuilder";
 
-// TODO: Replace Skype with Teams
+import rawContactData from "@/data/contact_info.json";
+
+type ContactData = {
+    email: string;
+    telephone: string;
+}
+
+const contactData = rawContactData as ContactData;
 
 import type { Metadata } from "next";
 export const metadata: Metadata = buildMetadata({
     title: "Contact me",
     description:
-        "Contact me Email Dr Larson on: DrL@mathstutorgeneva.ch Mobile: +41 79 373 4686 Skype: live:bill_larson_1",
+        `Contact me Email Dr Larson on: ${contactData.email} | Mobile: ${contactData.telephone} | Teams: ${contactData.email}`,
     slug: "/contact-dr-larson",
     keywords: ["math tutor", "Geneva", "Nyon", "IB", "SAT", "contact", "Dr Larson"],
     images: [
@@ -29,9 +39,8 @@ function createJsonLdGraph(baseUrl: string) {
         "@type": "WebPage",
         "@id": `${baseUrl}/contact`,
         url: `${baseUrl}/contact`,
-        name: "Contact me",
-        description:
-            "Contact me Email Dr Larson on: DrL@mathstutorgeneva.ch Mobile: +41 79 373 4686 Skype: live:bill_larson_1",
+        name: metadata.title,
+        description: metadata.description,
         inLanguage: "en-US",
         dateModified: new Date().toISOString().split("T")[0],
         isPartOf: {
@@ -96,6 +105,8 @@ function createJsonLdGraph(baseUrl: string) {
 }
 
 
+
+
 export default function Contact() {
     const baseUrl = getBaseUrl();
     const jsonLd = createJsonLdGraph(baseUrl);
@@ -112,7 +123,7 @@ export default function Contact() {
                         Contact Dr. W. J. Larson
                     </h1>
                     <p>
-                        To inquire about tutoring, please contact me via email, phone, or Skype.
+                        To inquire about tutoring, please contact me via email, phone, or Teams.
                     </p>
                 </section>
 
@@ -129,33 +140,18 @@ export default function Contact() {
                 </section>
 
                 {/* Contact Details */}
-                <section className="text-center space-y-2">
+                <section className="text-center space-y-2 mx-auto flex flex-col w-fit items-baseline" >
                     <p>
                         📧{" "}
-                        <a
-                            href="mailto:DrL@MathsTutorGeneva.ch"
-                            className="text-blue-600 dark:text-blue-400 hover:underline"
-                        >
-                            DrL@MathsTutorGeneva.ch
-                        </a>
+                        <ContactLink text={contactData.email} href={`mailto:${encodeURIComponent(contactData.email)}`}/>
                     </p>
                     <p>
                         📞{" "}
-                        <a
-                            href="tel:+41793734686"
-                            className="text-blue-600 dark:text-blue-400 hover:underline"
-                        >
-                            +41 79 373 4686
-                        </a>
+                        <ContactLink text={contactData.telephone} href={`mailto:${encodeURIComponent(contactData.telephone.replaceAll(' ', ''))}`}/>
                     </p>
                     <p>
                         💬{" "}
-                        <a
-                            href="skype:live:bill_larson_1?call"
-                            className="text-blue-600 dark:text-blue-400 hover:underline"
-                        >
-                            Skype: live:bill_larson_1
-                        </a>
+                        <ContactLink text={"Teams"} href={`https://teams.microsoft.com/l/call/0/0?users=${encodeURIComponent(contactData.email)}`} />
                     </p>
                 </section>
 
