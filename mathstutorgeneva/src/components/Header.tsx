@@ -39,11 +39,11 @@ export default function Header(): React.ReactElement {
 					<div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
 						<div className="flex h-16 items-center justify-between">
 							<div className="flex-shrink-0 text-lg font-bold text-white">
-								<Link href="/">Dr. William J. Larson [Hardcoded]</Link>
+								<Link href="/">Dr. William J. Larson</Link>
 							</div>
 
 							<div className="hidden sm:block sm:ml-6">
-								<div className="flex space-x-4">
+								<div className="flex space-x-4 items-center">
 									{navigation.map((item) => (
 										<Link
 											key={item.name}
