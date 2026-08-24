@@ -1,9 +1,13 @@
 import React from "react";
 import Link from "next/link";
 
+// Components
+import JsonLDScript from "@/components/JsonLDScript";
+
 // lib
 import { getBaseUrl } from "@/lib/getBaseUrl";
 import { buildMetadata } from "@/lib/metadataBuilder";
+import { createJsonLdGraph } from "@/lib/createJsonLdGraph";
 
 import type { Metadata } from "next";
 export const metadata: Metadata = buildMetadata({
@@ -11,89 +15,18 @@ export const metadata: Metadata = buildMetadata({
     description:
         "How I tutor: Typically, I set the student a problem on the topic. Typically the student cannot do the problem ... so, I set an easier problem.",
     slug: "/how-i-tutor",
-    keywords: ["math tutor", "Geneva", "Nyon", "Dr Larson", "how I tutor"],
+    keywords: ["Dr. William J. Larson", "maths tutor", "Geneva", "Nyon", "Dr. Larson", "how I tutor"],
     images: [],
 });
 
 
-// ld+json
-function createJsonLdGraph(baseUrl: string) {
-    const webPageJsonLd = {
-        "@type": "WebPage",
-        "@id": `${baseUrl}/how-i-tutor`,
-        url: `${baseUrl}/how-i-tutor`,
-        name: "How I tutor",
-        description: "How I tutor: Typically, I set the student a problem on the topic. Typically the student cannot do the problem ... so, I set an easier problem.",
-        inLanguage: "en-US",
-        dateModified: new Date().toISOString().split("T")[0],
-        isPartOf: {
-            "@type": "WebSite",
-            url: baseUrl,
-            name: "mathstutorgeneva.ch",
-        },
-        breadcrumb: {
-            "@id": `${baseUrl}/how-i-tutor#breadcrumb`,
-        },
-    };
-
-    const breadcrumbJsonLd = {
-        "@type": "BreadcrumbList",
-        "@id": `${baseUrl}/how-i-tutor#breadcrumb`,
-        itemListElement: [
-            {
-                "@type": "ListItem",
-                position: 1,
-                name: "Home",
-                item: `${baseUrl}/`,
-            },
-            {
-                "@type": "ListItem",
-                position: 2,
-                name: "How I tutor",
-                item: `${baseUrl}/how-i-tutor`,
-            },
-        ],
-    };
-
-    const personJsonLd = {
-        "@type": "Person",
-        name: "Dr. W. J. Larson",
-        jobTitle: "Private Math Tutor",
-        url: `${baseUrl}/`,
-        image: `${baseUrl}/images/about-dr-larson-maths-tutor/cropped-bill2-200x200.jpg`,
-        worksFor: [
-            {
-                "@type": "Organization",
-                name: "CERN",
-                url: "https://home.cern/",
-            },
-            {
-                "@type": "EducationalOrganization",
-                name: "International School of Geneva – La Grande Boissière",
-                url: "https://www.ecolint.ch/our-campuses/la-grande-boissiere",
-            },
-        ],
-    };
-
-    return {
-        "@context": "https://schema.org",
-        "@graph": [webPageJsonLd, breadcrumbJsonLd, personJsonLd],
-    };
-
-}
-
-
 export default function HowITutor() {
     const baseUrl = getBaseUrl();
-    const jsonLd = createJsonLdGraph(baseUrl);
+    const jsonLd = createJsonLdGraph(baseUrl, metadata);
+    
     return (
         <>
-            <script
-                type="application/ld+json"
-                dangerouslySetInnerHTML={{
-                    __html: JSON.stringify(jsonLd).replace(/</g, "\\u003c"),
-                }}
-            />
+            <JsonLDScript data={jsonLd} />
             <div className="max-w-4xl mx-auto px-6 py-12 space-y-10 text-gray-800 dark:text-gray-100">
                 {/* Title */}
                 <section className="space-y-2">
@@ -114,16 +47,16 @@ export default function HowITutor() {
                         How My Lessons are Structured
                     </h2>
                     <p>
-                        Once we have identified topics that the student thinks that s/he needs help with, I go through a cycle.
+                        Once we have identified topics that the student thinks that they need help with, I go through a cycle.
                     </p>
                     <p>
-                        I set the student a problem on the topic. Typically the student cannot do the problem. That’s why s/he came to me in the first place, after all. So, I set an easier problem on the same topic.
+                        I set the student a problem on the topic. Typically the student cannot do the problem. That’s why they came to me in the first place, after all. So, I set an easier problem on the same topic.
                     </p>
                     <p>
-                        By this time I understand how well or poorly s/he understands this topic. If necessary, I give a mini-lesson. Then we try again. I may create and work on examples until s/he understands and can do the original problem. Then we do another similar problem to be sure.
+                        By this time I understand how well or poorly they understand the current topic. If necessary, I give a mini-lesson. Then we try again. I may create and work on examples until they understand and can do the original problem. Then we do another similar problem to be sure.
                     </p>
                     <p>
-                        It’s not uncommon that in this process I discover that the student has learned and been using for years false methods that s/he must unlearn. (See my list of math errors on this site.) The student has been building on sand. So we stop what we were doing, put in the needed strong foundations for progress and then return to the current topic.
+                        It’s not uncommon that in this process I discover that the student has learned and been using for years false methods that they must unlearn. (See my list of maths errors on this site.) The student has been building on sand. So we stop what we were doing, put in the needed strong foundations for progress and then return to the current topic.
                     </p>
                 </section>
 

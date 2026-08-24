@@ -3,82 +3,20 @@ import React from "react";
 // lib
 import { getBaseUrl } from "@/lib/getBaseUrl";
 import { buildMetadata } from "@/lib/metadataBuilder";
+import { createJsonLdGraph } from "@/lib/createJsonLdGraph";
 
 // Components
+import JsonLDScript from "@/components/JsonLDScript";
 import TeachingAidsBtn from "@/components/TeachingAidsBtn";
 
 import type { Metadata } from "next";
 export const metadata: Metadata = buildMetadata({
     title: "Ten commandments of Mathematics",
-    description: "Dr Larson's Ten Commandments for learning maths",
+    description: "Dr. Larson's Ten Commandments for learning maths",
     slug: "/maths-jokes",
-    keywords: ["math tutor", "Geneva", "Nyon", "IB", "SAT", "jokes", "Dr Larson"],
+    keywords: ["Dr. William J. Larson", "maths tutor", "Geneva", "Nyon", "IB", "IGCSE", "SAT", "ACT", "jokes", "Dr. Larson"],
     images: [],
 });
-
-function createJsonLdGraph(baseUrl: string) {
-    const webPageJsonLd = {
-        "@type": "WebPage",
-        "@id": `${baseUrl}/maths-jokes`,
-        url: `${baseUrl}/maths-jokes`,
-        name: "Ten commandments of Mathematics",
-        description: "Dr Larson's Ten Commandments for learning maths",
-        inLanguage: "en-US",
-        dateModified: new Date().toISOString().split("T")[0],
-        isPartOf: {
-            "@type": "WebSite",
-            url: baseUrl,
-            name: "mathstutorgeneva.ch",
-        },
-        breadcrumb: {
-            "@id": `${baseUrl}/maths-jokes#breadcrumb`,
-        },
-    };
-
-    const breadcrumbJsonLd = {
-        "@type": "BreadcrumbList",
-        "@id": `${baseUrl}/maths-jokes#breadcrumb`,
-        itemListElement: [
-            {
-                "@type": "ListItem",
-                position: 1,
-                name: "Home",
-                item: `${baseUrl}/`,
-            },
-            {
-                "@type": "ListItem",
-                position: 2,
-                name: "Ten commandments of Mathematics",
-                item: `${baseUrl}/maths-jokes`,
-            },
-        ],
-    };
-
-    const personJsonLd = {
-        "@type": "Person",
-        name: "Dr. W. J. Larson",
-        jobTitle: "Private Math Tutor",
-        url: `${baseUrl}/`,
-        image: `${baseUrl}/images/about-dr-larson-maths-tutor/cropped-bill2-200x200.jpg`,
-        worksFor: [
-            {
-                "@type": "Organization",
-                name: "CERN",
-                url: "https://home.cern/",
-            },
-            {
-                "@type": "EducationalOrganization",
-                name: "International School of Geneva – La Grande Boissière",
-                url: "https://www.ecolint.ch/our-campuses/la-grande-boissiere",
-            },
-        ],
-    };
-
-    return {
-        "@context": "https://schema.org",
-        "@graph": [webPageJsonLd, breadcrumbJsonLd, personJsonLd],
-    };
-}
 
 const commandments = [
     "Thou shalt read Thy problem.",
@@ -95,13 +33,10 @@ const commandments = [
 
 export default function MathsCommandments() {
     const baseUrl = getBaseUrl();
-    const jsonLd = createJsonLdGraph(baseUrl);
+    const jsonLd = createJsonLdGraph(baseUrl, metadata);
     return (
         <>
-        <script
-            type="application/ld+json"
-            dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd).replace(/</g, "\\u003c") }}
-        />
+            <JsonLDScript data={jsonLd} />
             <div className="max-w-4xl mx-auto px-6 py-12 space-y-10 text-gray-800 dark:text-gray-100">
                 <section className="text-center space-y-4">
                     <h1 className="text-3xl font-bold text-orange-600 dark:text-orange-400">

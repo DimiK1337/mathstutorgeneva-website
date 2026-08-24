@@ -1,10 +1,13 @@
 import React from "react";
+import Link from "next/link";
 
 // lib
 import { getBaseUrl } from "@/lib/getBaseUrl";
 import { buildMetadata } from "@/lib/metadataBuilder";
+import { createJsonLdGraph } from "@/lib/createJsonLdGraph";
 
 // Components
+import JsonLDScript from "@/components/JsonLDScript";
 import TeachingAidsBtn from "@/components/TeachingAidsBtn";
 
 import type { Metadata } from "next";
@@ -13,74 +16,9 @@ export const metadata: Metadata = buildMetadata({
     description:
         "TI-84 Calculator Guides. Learn which calculators are allowed in the IB exam, how to update your TI-84 software, and download printable guides.",
     slug: "/ti-84-calculator-docs",
-    keywords: ["math tutor", "Geneva", "Nyon", "IB", "SAT", "TI-84", "Dr Larson"],
+    keywords: ["Dr. William J. Larson", "maths tutor", "Geneva", "Nyon", "IB", "IGCSE", "SAT", "ACT", "TI-84", "Dr. Larson"],
     images: [],
 });
-
-function createJsonLdGraph(baseUrl: string) {
-    const webPageJsonLd = {
-        "@type": "WebPage",
-        "@id": `${baseUrl}/ti-84-calculator-docs`,
-        url: `${baseUrl}/ti-84-calculator-docs`,
-        name: "TI-84 calculator docs",
-        description:
-            "TI-84 Calculator Guides. Learn which calculators are allowed in the IB exam, how to update your TI-84 software, and download printable guides.",
-        inLanguage: "en-US",
-        dateModified: new Date().toISOString().split("T")[0],
-        isPartOf: {
-            "@type": "WebSite",
-            url: baseUrl,
-            name: "mathstutorgeneva.ch",
-        },
-        breadcrumb: {
-            "@id": `${baseUrl}/ti-84-calculator-docs#breadcrumb`,
-        },
-    };
-
-    const breadcrumbJsonLd = {
-        "@type": "BreadcrumbList",
-        "@id": `${baseUrl}/ti-84-calculator-docs#breadcrumb`,
-        itemListElement: [
-            {
-                "@type": "ListItem",
-                position: 1,
-                name: "Home",
-                item: `${baseUrl}/`,
-            },
-            {
-                "@type": "ListItem",
-                position: 2,
-                name: "TI-84 calculator docs",
-                item: `${baseUrl}/ti-84-calculator-docs`,
-            },
-        ],
-    };
-
-    const personJsonLd = {
-        "@type": "Person",
-        name: "Dr. W. J. Larson",
-        jobTitle: "Private Math Tutor",
-        url: `${baseUrl}/`,
-        image: `${baseUrl}/images/about-dr-larson-maths-tutor/cropped-bill2-200x200.jpg`,
-        worksFor: [
-            {
-                "@type": "Organization",
-                name: "CERN",
-                url: "https://home.cern/",
-            },
-            {
-                "@type": "EducationalOrganization",
-                name: "International School of Geneva – La Grande Boissière",
-                url: "https://www.ecolint.ch/our-campuses/la-grande-boissiere",
-            },
-        ],
-    };
-
-    return {
-        "@context": "https://schema.org",
-        "@graph": [webPageJsonLd, breadcrumbJsonLd, personJsonLd],
-    };
-}
 
 const pdfs = [
     {
@@ -97,14 +35,11 @@ const pdfs = [
 
 export default function TI84CalculatorDocs() {
     const baseUrl = getBaseUrl();
-    const jsonLd = createJsonLdGraph(baseUrl);
+    const jsonLd = createJsonLdGraph(baseUrl, metadata);
 
     return (
         <>
-        <script
-            type="application/ld+json"
-            dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd).replace(/</g, "\\u003c") }}
-        />
+            <JsonLDScript data={jsonLd} />
             <div className="w-full max-w-screen-xl mx-auto px-6 py-12 space-y-10 text-gray-800 dark:text-gray-100">
                 <h1 className="text-3xl font-bold text-blue-700 dark:text-blue-400">TI-84 Calculator Guides</h1>
 
@@ -123,14 +58,14 @@ export default function TI84CalculatorDocs() {
                     </p>
                     <p>
                         How to update software on the TI-84:{" "}
-                        <a
+                        <Link
                             href="/pdfs/ti-84-calculator-docs/updating-ti-84-calculators.pdf"
                             target="_blank"
                             rel="noopener noreferrer"
                             className="text-blue-600 dark:text-blue-300 underline"
                         >
                             Updating TI-84
-                        </a>
+                        </Link>
                     </p>
                 </div>
 
@@ -150,7 +85,7 @@ export default function TI84CalculatorDocs() {
                                 title={title}
                             />
                             <p className="text-base font-medium">{title}</p>
-                            <a
+                            <Link
                                 href={`/pdfs/ti-84-calculator-docs/${file}`}
                                 download
                                 target="_blank"
@@ -158,7 +93,7 @@ export default function TI84CalculatorDocs() {
                                 className="inline-block bg-blue-600 text-white text-sm px-4 py-2 rounded hover:bg-blue-700 transition"
                             >
                                 Download PDF
-                            </a>
+                            </Link>
                         </div>
                     ))}
                 </div>
