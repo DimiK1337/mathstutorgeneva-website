@@ -11,6 +11,7 @@ import { buildMetadata } from "@/lib/metadataBuilder";
 import { createJsonLdGraph } from "@/lib/createJsonLdGraph";
 
 // Components
+import JsonLDScript from "@/components/JsonLDScript";
 import TeachingAidsBtn from "@/components/TeachingAidsBtn";
 
 import type { Metadata } from "next";
@@ -19,7 +20,7 @@ export const metadata: Metadata = buildMetadata({
     description:
         "IB HL Questions – HL Sequences, Trig Identities, Induction, and other past paper topics (2008–2014), with full mark schemes.",
     slug: "/handouts/ib-hl-questions",
-    keywords: ["maths tutor", "Geneva", "Nyon", "IB", "handouts", "HL", "Dr. Larson"],
+    keywords: ["Dr. William J. Larson", "maths tutor", "Geneva", "Nyon", "IB", "handouts", "HL", "Dr. Larson"],
     images: [],
 });
 
@@ -61,10 +62,7 @@ export default function IBHLQuestions() {
 
     return (
         <>
-        <script
-            type="application/ld+json"
-            dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd).replace(/</g, "\\u003c") }}
-        />
+            <JsonLDScript data={jsonLd} />
             <div className="max-w-4xl mx-auto px-6 py-12 space-y-8 text-gray-800 dark:text-gray-100">
                 <h1 className="text-2xl font-semibold text-blue-700 dark:text-blue-400">IB HL Questions</h1>
 

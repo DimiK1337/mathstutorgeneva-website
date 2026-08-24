@@ -1,6 +1,9 @@
 import React from "react";
 import Link from "next/link";
 
+// Components
+import JsonLDScript from "@/components/JsonLDScript";
+
 // lib
 import { getBaseUrl } from "@/lib/getBaseUrl";
 import { buildMetadata } from "@/lib/metadataBuilder";
@@ -23,12 +26,7 @@ export default function HowITutor() {
     
     return (
         <>
-            <script
-                type="application/ld+json"
-                dangerouslySetInnerHTML={{
-                    __html: JSON.stringify(jsonLd).replace(/</g, "\\u003c"),
-                }}
-            />
+            <JsonLDScript data={jsonLd} />
             <div className="max-w-4xl mx-auto px-6 py-12 space-y-10 text-gray-800 dark:text-gray-100">
                 {/* Title */}
                 <section className="space-y-2">

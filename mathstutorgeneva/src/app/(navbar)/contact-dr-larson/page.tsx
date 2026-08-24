@@ -1,15 +1,16 @@
 import React from "react";
-
 import Image from "next/image";
-
-// Custom Components
-import ContactLink from "@/components/ContactLink";
 
 // lib
 import { getBaseUrl } from "@/lib/getBaseUrl";
 import { buildMetadata } from "@/lib/metadataBuilder";
 import { createJsonLdGraph } from "@/lib/createJsonLdGraph";
 
+// Components
+import ContactLink from "@/components/ContactLink";
+import JsonLDScript from "@/components/JsonLDScript";
+
+// Data
 import rawContactData from "@/data/contactInfo.json";
 
 type ContactData = {
@@ -41,10 +42,7 @@ export default function Contact() {
     const jsonLd = createJsonLdGraph(baseUrl, metadata);
     return (
         <>
-            <script
-                type="application/ld+json"
-                dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd).replace(/</g, "\\u003c") }}
-            />
+            <JsonLDScript data={jsonLd}/>
             <div className="max-w-2xl mx-auto px-6 py-12 space-y-10 text-gray-800 dark:text-gray-100">
                 {/* Header */}
                 <section className="text-center space-y-4">
@@ -63,7 +61,8 @@ export default function Contact() {
                         alt="Rational vs Real numbers"
                         width={320}
                         height={320}
-                        className="mx-auto mt-4 rounded shadow-md transition-transform hover:scale-105"
+                        className="mx-auto mt-4 rounded shadow-md transition-transform hover:scale-105 w-auto h-auto"
+                        loading="eager"
                     />
 
                 </section>

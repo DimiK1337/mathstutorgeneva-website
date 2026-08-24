@@ -1,6 +1,9 @@
 import React from "react";
 import Image from "next/image";
 
+// Components
+import JsonLDScript from "@/components/JsonLDScript";
+
 // lib
 import { getBaseUrl } from "@/lib/getBaseUrl";
 import { buildMetadata } from "@/lib/metadataBuilder";
@@ -35,10 +38,7 @@ export default function Location() {
 
     return (
         <>
-            <script
-                type="application/ld+json"
-                dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd).replace(/</g, "\\u003c") }}
-            />
+            <JsonLDScript data={jsonLd}/>
             <div className="max-w-4xl mx-auto px-6 py-12 space-y-10 text-gray-800 dark:text-gray-100">
                 {/* Header */}
                 <section className="text-center space-y-2">
@@ -56,9 +56,8 @@ export default function Location() {
                     <iframe
                         className="mx-auto"
                         src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d5503.741485344116!2d6.229282476938711!3d46.39178867107185!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x478c432c259742dd%3A0x200a016895ee73f!2sChem.%20des%20Plantaz%2048%2C%201260%20Nyon!5e0!3m2!1sen!2sch!4v1787234996765!5m2!1sen!2sch"
-
                         allowFullScreen={true}
-                        loading="lazy"
+                        loading="eager"
                         referrerPolicy="strict-origin-when-cross-origin"
                     >
 
@@ -72,7 +71,8 @@ export default function Location() {
                         alt="Walking map to Chemin des Plantaz"
                         width={365}
                         height={400}
-                        className="mx-auto rounded-lg shadow-md transition-transform hover:scale-105"
+                        className="mx-auto rounded-xl shadow-md transition-transform hover:scale-105 w-auto h-auto"
+                        loading="eager"
                     />
                 </section>
 
@@ -120,7 +120,8 @@ export default function Location() {
                         alt="Large map showing full route"
                         width={400}
                         height={373}
-                        className="mx-auto rounded-lg shadow-md transition-transform hover:scale-105"
+                        className="mx-auto rounded-xl shadow-md transition-transform hover:scale-105 w-auto h-auto"
+                        loading="eager"
                     />
                 </section>
 

@@ -1,6 +1,9 @@
 import React from "react";
 import Image from "next/image";
 
+// Components
+import JsonLDScript from "@/components/JsonLDScript";
+
 // lib
 import { getBaseUrl } from "@/lib/getBaseUrl";
 import { buildMetadata } from "@/lib/metadataBuilder";
@@ -12,7 +15,7 @@ export const metadata: Metadata = buildMetadata({
     title: "Tutoring fees",
     description: "Flexible fees for private maths tuition",
     slug: "/fees",
-    keywords: ["maths tutor", "Geneva", "Nyon", "IB", "IGCSE", "SAT", "ACT", "fees", "Dr. Larson"],
+    keywords: ["Dr. William J. Larson", "maths tutor", "Geneva", "Nyon", "IB", "IGCSE", "SAT", "ACT", "fees", "Dr. Larson"],
     images: [
         {
             path: "/images/fees/addition-768x231.png",
@@ -23,69 +26,19 @@ export const metadata: Metadata = buildMetadata({
     ],
 });
 
-// ld+json
-
-// function createJsonLdGraph(baseUrl: string) {
-//     const webPageJsonLd = {
-//         "@type": "WebPage",
-//         "@id": `${baseUrl}/fees`,
-//         url: `${baseUrl}/fees`,
-//         name: "Tutoring fees",
-//         description: "Flexible fees for private maths tuition",
-//         inLanguage: "en-US",
-//         dateModified: new Date().toISOString().split("T")[0],
-//         isPartOf: {
-//             "@type": "WebSite",
-//             url: baseUrl,
-//             name: "mathstutorgeneva.ch",
-//         },
-//         breadcrumb: {
-//             "@id": `${baseUrl}/fees#breadcrumb`,
-//         },
-
-//     };
-
-//     const breadcrumbJsonLd = {
-//         "@type": "BreadcrumbList",
-//         "@id": `${baseUrl}/fees#breadcrumb`,
-//         itemListElement: [
-//             {
-//                 "@type": "ListItem",
-//                 position: 1,
-//                 name: "Home",
-//                 item: `${baseUrl}/`,
-//             },
-//             {
-//                 "@type": "ListItem",
-//                 position: 2,
-//                 name: "Tutoring fees",
-//                 item: `${baseUrl}/fees`,
-//             },
-//         ],
-//     };
-//     const personJsonLd = createPersonJsonLd(baseUrl);
-//     return {
-//         "@context": "https://schema.org",
-//         "@graph": [webPageJsonLd, breadcrumbJsonLd, personJsonLd],
-//     };
-// }
-
 
 export default function Fees() {
     const baseUrl = getBaseUrl();
     const jsonLd = createJsonLdGraph(baseUrl, metadata);
     return (
         <>
-            <script
-                type="application/ld+json"
-                dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd).replace(/</g, "\\u003c") }}
-            />
+            <JsonLDScript data={jsonLd}/>
 
             {/* Page content */}
             <div className="max-w-3xl mx-auto px-6 py-12 space-y-10 text-gray-800 dark:text-gray-100">
                 {/* Page Title */}
                 <section className="space-y-2">
-                    <h1 className="text-3xl font-bold text-blue-700 dark:text-blue-400">
+                    <h1 className="text-3xl font-bold text-blue-700 dark:text-blue-400 text-center">
                         Tutoring Fees
                     </h1>
                     <p className="font-semibold">On January 1, 2023 my rates go up as follows:</p>
@@ -108,7 +61,8 @@ export default function Fees() {
                         alt="Calvin and Hobbes maths cartoon"
                         width={768}
                         height={231}
-                        className="mx-auto rounded shadow-md transition-transform hover:scale-105"
+                        className="mx-auto rounded shadow-md transition-transform hover:scale-105 w-auto h-auto"
+                        loading="eager"
                     />
                 </section>
             </div>

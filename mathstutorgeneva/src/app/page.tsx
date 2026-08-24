@@ -7,8 +7,10 @@ import Link from "next/link";
 import { getBaseUrl } from "@/lib/getBaseUrl";
 import { buildMetadata } from "@/lib/metadataBuilder";
 import { createJsonLdGraph } from "@/lib/createJsonLdGraph";
-
 import { type RoutePath, routeNames } from "@/lib/routeNames";
+
+// Components
+import JsonLDScript from "@/components/JsonLDScript";
 
 import ContactLink from "@/components/ContactLink";
 
@@ -60,12 +62,7 @@ export default function Home() {
 
     return (
         <>
-            <script
-                type="application/ld+json"
-                dangerouslySetInnerHTML={{
-                    __html: JSON.stringify(jsonLd).replace(/</g, '\\u003c'),
-                }}
-            />
+            <JsonLDScript data={jsonLd}/>
             <div className="space-y-12">
                 {/* Hero Section */}
                 <section className="text-center mt-10">
@@ -99,9 +96,9 @@ export default function Home() {
                         <Image
                             src="/images/home/mtg-2019-tutee1-half-400x350.jpg"
                             alt="Student 1 tutoring session with Dr. Larson"
-                            width={260}
-                            height={227} // maintains 400x350 ratio
-                            className="rounded-xl shadow-md object-cover transition-transform hover:scale-105"
+                            width={400}
+                            height={350} // maintains 400x350 ratio
+                            className="rounded-xl shadow-md object-cover transition-transform hover:scale-105 w-auto h-auto"
                         />
 
 
@@ -123,16 +120,16 @@ export default function Home() {
                         <Image
                             src="/images/home/mtg-2019-tutee2-half-400x350.jpg"
                             alt="Student 2 tutoring session with Dr. Larson"
-                            width={260}
-                            height={227} // maintains 400x350 ratio
-                            className="rounded-xl shadow-md object-cover transition-transform hover:scale-105"
+                            width={400}
+                            height={350} // maintains 400x350 ratio
+                            className="rounded-xl shadow-md object-cover transition-transform hover:scale-105 w-auto h-auto" 
                         />
                     </section>
                 </section>
 
                 {/* Strengths */}
                 <section className="bg-green-100 dark:bg-green-900 py-10 px-6 rounded-lg shadow max-w-4xl mx-auto w-fit flex flex-col items-start">
-                    <h2 className="text-2xl font-semibold text-center mb-6 text-green-900 dark:text-white">
+                    <h2 className="text-2xl font-semibold text-center mb-6 text-green-900 dark:text-white w-full">
                         My Strengths
                     </h2>
                     <ul className="list-disc list-inside text-green-800 dark:text-green-100 space-y-2">

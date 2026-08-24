@@ -1,17 +1,18 @@
-import rawData from '@/data/testimonials.json';
-
 
 // lib
 import { getBaseUrl } from '@/lib/getBaseUrl';
 import { buildMetadata } from '@/lib/metadataBuilder';
 import { createJsonLdGraph } from '@/lib/createJsonLdGraph';
 
+// Components
+import JsonLDScript from '@/components/JsonLDScript';
+
 import type { Metadata } from 'next';
 export const metadata: Metadata = buildMetadata({
     title: 'Testimonials',
     description: 'Testimonials from satisfied parents and students',
     slug: '/testimonials',
-    keywords: ['math tutor', 'Geneva', 'Nyon', 'testimonials', 'parent feedback'],
+    keywords: ['Dr. William J. Larson', 'maths tutor', 'Geneva', 'Nyon', 'testimonials', 'parent feedback', 'Dr. Larson'],
 });
 
 // Types to represent the structure of testimonials data from the JSON file
@@ -30,52 +31,7 @@ type TestimonialsJSON = {
     [year: string]: YearTestimonials | string[]; // safer to keep if years may not be strictly typed
 }
 
-
-// ld+json
-// function createJsonLdGraph(baseUrl: string) {
-//     const webPageJsonLd = {
-//         "@type": "WebPage",
-//         "@id": `${baseUrl}/testimonials`,
-//         url: `${baseUrl}/testimonials`,
-//         name: "Testimonials",
-//         description: "Testimonials from satisfied parents and students",
-//         inLanguage: "en-US",
-//         dateModified: new Date().toISOString().split("T")[0],
-//         isPartOf: {
-//             "@type": "WebSite",
-//             url: baseUrl,
-//             name: "mathstutorgeneva.ch",
-//         },
-//         breadcrumb: {
-//             "@id": `${baseUrl}/testimonials#breadcrumb`,
-//         },
-//     };
-
-//     const breadcrumbJsonLd = {
-//         "@type": "BreadcrumbList",
-//         "@id": `${baseUrl}/testimonials#breadcrumb`,
-//         itemListElement: [
-//             {
-//                 "@type": "ListItem",
-//                 position: 1,
-//                 name: "Home",
-//                 item: `${baseUrl}/`,
-//             },
-//             {
-//                 "@type": "ListItem",
-//                 position: 2,
-//                 name: "Testimonials",
-//                 item: `${baseUrl}/testimonials`,
-//             },
-//         ],
-//     };
-//     const personJsonLd = createPersonJsonLd(baseUrl)
-//     return {
-//         "@context": "https://schema.org",
-//         "@graph": [webPageJsonLd, breadcrumbJsonLd, personJsonLd],
-//     };
-// }
-
+import rawData from '@/data/testimonials.json';
 const testimonialsData = rawData as TestimonialsJSON;
 const order = testimonialsData._order;
 
@@ -99,10 +55,7 @@ export default function Testimonials() {
     const jsonLd = createJsonLdGraph(baseUrl, metadata);
     return (
         <>
-            <script
-                type="application/ld+json"
-                dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd).replace(/</g, '\\u003c') }}
-            />
+            <JsonLDScript data={jsonLd}/>
             <div className="max-w-5xl mx-auto px-6 py-12 space-y-16 text-gray-800 dark:text-gray-100">
                 <h1 className="text-3xl font-bold text-blue-700 dark:text-blue-400 text-center">
                     Testimonials

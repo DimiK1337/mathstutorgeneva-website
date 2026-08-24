@@ -5,7 +5,9 @@ import Link from "next/link";
 import { getBaseUrl } from "@/lib/getBaseUrl";
 import { buildMetadata } from "@/lib/metadataBuilder";
 import { createJsonLdGraph } from "@/lib/createJsonLdGraph";
+
 // Components
+import JsonLDScript from "@/components/JsonLDScript";
 import TeachingAidsBtn from "@/components/TeachingAidsBtn";
 
 import type { Metadata } from "next";
@@ -37,10 +39,7 @@ export default function TI84CalculatorDocs() {
 
     return (
         <>
-        <script
-            type="application/ld+json"
-            dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd).replace(/</g, "\\u003c") }}
-        />
+            <JsonLDScript data={jsonLd} />
             <div className="w-full max-w-screen-xl mx-auto px-6 py-12 space-y-10 text-gray-800 dark:text-gray-100">
                 <h1 className="text-3xl font-bold text-blue-700 dark:text-blue-400">TI-84 Calculator Guides</h1>
 

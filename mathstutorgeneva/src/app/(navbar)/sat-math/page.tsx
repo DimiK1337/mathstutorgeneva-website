@@ -5,6 +5,9 @@ import { getBaseUrl } from "@/lib/getBaseUrl";
 import { buildMetadata } from "@/lib/metadataBuilder";
 import { createJsonLdGraph } from "@/lib/createJsonLdGraph";
 
+// Components
+import JsonLDScript from "@/components/JsonLDScript";
+
 import type { Metadata } from "next";
 export const metadata: Metadata = buildMetadata({
     title: "SAT Math",
@@ -24,60 +27,6 @@ export const metadata: Metadata = buildMetadata({
     ],
     images: [],
 });
-
-// ld+json
-
-// function createJsonLdGraph(baseUrl: string) {
-//     const webPageJsonLd = {
-//         "@type": "WebPage",
-//         "@id": `${baseUrl}/sat-math`,
-//         url: `${baseUrl}/sat-math`,
-//         name: metadata.title,
-//         description: metadata.description,
-//         inLanguage: "en-US",
-//         dateModified: new Date().toISOString().split("T")[0],
-//         isPartOf: {
-//             "@type": "WebSite",
-//             url: baseUrl,
-//             name: "mathstutorgeneva.ch",
-//         },
-//         // TODO: Find image to use (perhaps just Dr. Larson)
-//         primaryImageOfPage: {
-//             "@type": "ImageObject",
-//             url: "",
-//             width: "",
-//             height: "",
-//         },
-//         breadcrumb: {
-//             "@id": `${baseUrl}/sat-math#breadcrumb`,
-//         },
-//     };
-
-//     const breadcrumbJsonLd = {
-//         "@type": "BreadcrumbList",
-//         "@id": `${baseUrl}/sat-math#breadcrumb`,
-//         itemListElement: [
-//             {
-//                 "@type": "ListItem",
-//                 position: 1,
-//                 name: "Home",
-//                 item: `${baseUrl}/`,
-//             },
-//             {
-//                 "@type": "ListItem",
-//                 position: 2,
-//                 name: "SAT Math",
-//                 item: `${baseUrl}/sat-math`,
-//             },
-//         ],
-//     };
-//     const personJsonLd = createPersonJsonLd(baseUrl);
-//     return {
-//         "@context": "https://schema.org",
-//         "@graph": [webPageJsonLd, breadcrumbJsonLd, personJsonLd],
-//     };
-// }
-
 
 // Should probably be moved to data folder
 const satTopics = [
@@ -131,13 +80,7 @@ export default function SATMath() {
 
     return (
         <>
-            <script
-                type="application/ld+json"
-                dangerouslySetInnerHTML={{
-                    __html: JSON.stringify(jsonLd).replace(/</g, "\\u003c"),
-                }}
-            />
-
+            <JsonLDScript data={jsonLd}/>
             <div className="max-w-4xl mx-auto px-6 py-12 space-y-12 text-gray-800 dark:text-gray-100">
                 {/* Header */}
                 <section className="space-y-2">

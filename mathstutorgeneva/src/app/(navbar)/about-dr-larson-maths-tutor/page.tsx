@@ -2,6 +2,9 @@ import React from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 
+// Components
+import JsonLDScript from '@/components/JsonLDScript';
+
 // lib
 import { getBaseUrl } from "@/lib/getBaseUrl";
 import { buildMetadata } from "@/lib/metadataBuilder";
@@ -67,12 +70,7 @@ export default function AboutDrLarsonMathsTutor() {
 
     return (
         <>
-            <script
-                type="application/ld+json"
-                dangerouslySetInnerHTML={{
-                    __html: JSON.stringify(jsonLd).replace(/</g, '\\u003c'),
-                }}
-            />
+            <JsonLDScript data={jsonLd}/>
             <div className="max-w-5xl mx-auto px-6 py-12 space-y-12 text-gray-800 dark:text-gray-100">
                 {/* Header */}
                 <section className="text-center space-y-4">
@@ -82,6 +80,7 @@ export default function AboutDrLarsonMathsTutor() {
                         width={128}
                         height={128}
                         className="mx-auto rounded-full shadow-md object-cover transition-transform hover:scale-105"
+                        loading='eager'
                     />
                     <h1 className="text-4xl font-extrabold text-blue-700 dark:text-blue-400">
                         About Dr. William J. Larson
@@ -134,7 +133,7 @@ export default function AboutDrLarsonMathsTutor() {
                                         alt={caption}
                                         width={160}
                                         height={208} // approx. 308x400 scaled
-                                        className="rounded shadow-md object-cover mb-2 transition-transform hover:scale-105"
+                                        className="rounded shadow-md object-cover mb-2 transition-transform hover:scale-105 w-auto h-auto"
                                     />
                                 </Link>
                                 <p className="text-sm font-medium">{caption}</p>
@@ -151,9 +150,7 @@ export default function AboutDrLarsonMathsTutor() {
                 {/* Personal Life */}
                 <section>
                     <h2 className="text-2xl font-semibold mb-4">Personal Life</h2>
-                    <p>
-                        Dr. Larson is an avid hiker, residing in Nyon, Switzerland, with his two sons.
-                    </p>
+                    <p> Dr. Larson is an avid hiker, residing in Nyon, Switzerland, with his two sons.</p>
                 </section>
             </div>
         </>
