@@ -6,8 +6,9 @@ import Link from "next/link";
 // lib
 import { getBaseUrl } from "@/lib/getBaseUrl";
 import { buildMetadata } from "@/lib/metadataBuilder";
-// import createPersonJsonLd from '@/lib/createPersonJsonLd';
 import { createJsonLdGraph } from "@/lib/createJsonLdGraph";
+
+import { type RoutePath, routeNames } from "@/lib/routeNames";
 
 import ContactLink from "@/components/ContactLink";
 
@@ -42,9 +43,20 @@ export const metadata: Metadata = buildMetadata({
     ogType: "website",
 });
 
+// TODO: Make a component for layout with a prop to handle jsonLd config obj
 export default function Home() {
     const baseUrl = getBaseUrl();
     const jsonLd = createJsonLdGraph(baseUrl, metadata);
+
+    const teamsURL = `https://teams.microsoft.com/l/call/0/0?users=${encodeURIComponent(contactData.email)}`;
+
+    const teachAidURLs = [
+        "/maths-jokes",
+        "/handouts",
+        "/handouts/ib-hl-questions",
+        "/handouts/ib-sl-questions",
+        "/ti-84-calculator-docs",
+    ] as (RoutePath)[];
 
     return (
         <>
@@ -164,7 +176,7 @@ export default function Home() {
                     <ul className="flex flex-wrap justify-center gap-4 mt-2 text-blue-700 dark:text-blue-300">
                         <li>• At the student’s home</li>
                         <li>• <Link href="/how-to-get-to-the-larsons-in-nyon" className="underline">At the Larsons’ home in Nyon</Link></li>
-                        <li>• By <ContactLink text={"Teams"} href={`https://teams.microsoft.com/l/call/0/0?users=${encodeURIComponent(contactData.email)}`} /></li>
+                        <li>• By <ContactLink text={"Teams"} href={teamsURL} /></li>
                     </ul>
                 </section>
 
@@ -172,11 +184,11 @@ export default function Home() {
                 <section className="text-center py-6" id="TeachingAids">
                     <h2 className="text-xl font-semibold text-blue-800 dark:text-blue-300 mb-2">Free Teaching Aids</h2>
                     <nav className="flex flex-wrap justify-center gap-4 text-sm font-medium text-blue-700 dark:text-blue-300">
-                        <Link href="/maths-jokes" className="hover:underline">Maths Ten Commandments</Link>
-                        <Link href="/handouts" className="hover:underline">General Handouts</Link>
-                        <Link href="/handouts/ib-hl-questions" className="hover:underline">IB HL Questions</Link>
-                        <Link href="/handouts/ib-sl-questions" className="hover:underline">IB SL Questions</Link>
-                        <Link href="/ti-84-calculator-docs" className="hover:underline">TI-84 Calculator Guides</Link>
+                        {
+                            teachAidURLs.map(
+                                route => <Link key={route} href={route} className="hover:underline">{routeNames[route]}</Link>
+                            )
+                        }
 
                         <a
                             href="https://tutorial.math.lamar.edu/Extras/CommonErrors/AlgebraErrors.aspx"
