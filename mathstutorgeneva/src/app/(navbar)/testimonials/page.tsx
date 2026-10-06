@@ -50,46 +50,54 @@ function getRandomBg(): string {
     return bgColors[index];
 }
 
+
+
+const TestimonialListItem = ({ testimonial, name }: SingleTestimonial) => {
+
+    //const { testimonial, name } = testimonialObj;
+    return (
+        <blockquote
+            className={`p-4 rounded shadow-md ${getRandomBg()} transition duration-300 ease-in-out`}
+        >
+            <p className="italic text-lg">“{testimonial}”</p>
+            <span className="block text-right font-semibold mt-2">— {name}</span>
+        </blockquote>
+    )
+
+}
+
 export default function Testimonials() {
     const baseUrl = getBaseUrl();
     const jsonLd = createJsonLdGraph(baseUrl, metadata);
     return (
         <>
-            <JsonLDScript data={jsonLd}/>
+            <JsonLDScript data={jsonLd} />
             <div className="max-w-5xl mx-auto px-6 py-12 space-y-16 text-gray-800 dark:text-gray-100">
                 <h1 className="text-3xl font-bold text-blue-700 dark:text-blue-400 text-center">
                     Testimonials
                 </h1>
 
-                {order.map((year, index) => {
+                {order.map((year, order_index) => {
                     const data = testimonialsData[year];
 
                     // Type guard: ensure it's not the _order key
                     // TODO: Set a message in case there's an error. Can I do this without useState?
                     if (!data || !('testimonials' in data)) return null;
 
-                    const { intro, testimonials } = data as YearTestimonials;
-
+                    //const { intro, testimonials } = data as YearTestimonials;
+                    //const sectionBorderClassname = `space-y-6 ${order_index !== 0 ? 'pt-10 border-t border-gray-300 dark:border-gray-700' : ''}`;
+                    const { testimonials } = data as YearTestimonials
                     return (
-                        <section
-                            key={year}
-                            className={`space-y-6 ${index !== 0 ? 'pt-10 border-t border-gray-300 dark:border-gray-700' : ''}`}
-                        >
-                            <h2 className="text-2xl font-semibold text-blue-600 dark:text-blue-300">{year}</h2>
-                            {intro && <p className="italic">{intro}</p>}
-
-                            <div className="space-y-6">
-                                {testimonials.map(({ testimonial, name }, idx) => (
-                                    <blockquote
-                                        key={idx}
-                                        className={`p-4 rounded shadow-md ${getRandomBg()} transition duration-300 ease-in-out`}
-                                    >
-                                        <p className="italic text-lg">“{testimonial}”</p>
-                                        <span className="block text-right font-semibold mt-2">— {name}</span>
-                                    </blockquote>
-                                ))}
-                            </div>
-                        </section>
+                        // <section key={year} >
+                        //     {/* <h2 className="text-2xl font-semibold text-blue-600 dark:text-blue-300">{year}</h2>
+                        //     {intro && <p className="italic">{intro}</p>} */}
+                        //     {/* <div className="space-y-6">
+                        //         {testimonials.map(({ testimonial, name }, idx) => (
+                        //             <TestimonialListItem key={idx} testimonial={testimonial} name={name} />
+                        //         ))}
+                        //     </div> */}
+                        // </section>
+                        testimonials.map(({ testimonial, name }, idx) => <TestimonialListItem key={idx} testimonial={testimonial} name={name} />)
                     );
                 })}
             </div>
