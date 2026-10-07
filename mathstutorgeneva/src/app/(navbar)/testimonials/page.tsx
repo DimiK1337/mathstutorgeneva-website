@@ -45,19 +45,24 @@ const bgColors = [
     'bg-indigo-50 dark:bg-indigo-900',
 ];
 
-function getRandomBg(): string {
-    const index = Math.floor(Math.random() * bgColors.length);
-    return bgColors[index];
-}
-
-
+const getRandomArrayElement = <T,>(array: T[]): T => array[Math.floor(Math.random() * array.length)];
+const shuffle = <T,>(array: T[]): T[]  => {
+    let currentIdx = array.length;
+    while (currentIdx !== 0) {
+        const randomIdx = Math.floor(Math.random()*currentIdx);
+        currentIdx--;
+        // Swap the current index with the randomly selected one
+        [array[currentIdx], array[randomIdx]] = [array[randomIdx], array[currentIdx]];
+    }
+    return array;
+};
 
 const TestimonialListItem = ({ testimonial, name }: SingleTestimonial) => {
 
     //const { testimonial, name } = testimonialObj;
     return (
         <blockquote
-            className={`p-4 rounded shadow-md ${getRandomBg()} transition duration-300 ease-in-out`}
+            className={`p-4 rounded shadow-md ${getRandomArrayElement(bgColors)} transition duration-300 ease-in-out`}
         >
             <p className="italic text-lg">“{testimonial}”</p>
             <span className="block text-right font-semibold mt-2">— {name}</span>
@@ -69,6 +74,7 @@ const TestimonialListItem = ({ testimonial, name }: SingleTestimonial) => {
 export default function Testimonials() {
     const baseUrl = getBaseUrl();
     const jsonLd = createJsonLdGraph(baseUrl, metadata);
+    const shuffledOrder = shuffle([...order]);
     return (
         <>
             <JsonLDScript data={jsonLd} />
@@ -77,27 +83,15 @@ export default function Testimonials() {
                     Testimonials
                 </h1>
 
-                {order.map((year, order_index) => {
+                {shuffledOrder.map((year) => {
                     const data = testimonialsData[year];
-
-                    // Type guard: ensure it's not the _order key
                     // TODO: Set a message in case there's an error. Can I do this without useState?
                     if (!data || !('testimonials' in data)) return null;
-
-                    //const { intro, testimonials } = data as YearTestimonials;
-                    //const sectionBorderClassname = `space-y-6 ${order_index !== 0 ? 'pt-10 border-t border-gray-300 dark:border-gray-700' : ''}`;
-                    const { testimonials } = data as YearTestimonials
+                    const testimonials = shuffle([...data.testimonials]);
                     return (
-                        // <section key={year} >
-                        //     {/* <h2 className="text-2xl font-semibold text-blue-600 dark:text-blue-300">{year}</h2>
-                        //     {intro && <p className="italic">{intro}</p>} */}
-                        //     {/* <div className="space-y-6">
-                        //         {testimonials.map(({ testimonial, name }, idx) => (
-                        //             <TestimonialListItem key={idx} testimonial={testimonial} name={name} />
-                        //         ))}
-                        //     </div> */}
-                        // </section>
-                        testimonials.map(({ testimonial, name }, idx) => <TestimonialListItem key={idx} testimonial={testimonial} name={name} />)
+                        testimonials.map(
+                            ({ testimonial, name }, idx) => <TestimonialListItem key={idx} testimonial={testimonial} name={name} />
+                        )
                     );
                 })}
             </div>
