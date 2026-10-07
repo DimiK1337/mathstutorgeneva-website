@@ -98,6 +98,7 @@ export default function Home() {
                             alt="Student 1 tutoring session with Dr. Larson"
                             width={400}
                             height={350} // maintains 400x350 ratio
+                            loading="eager"
                             className="rounded-xl shadow-md object-cover transition-transform hover:scale-105 w-auto h-auto"
                         />
 
