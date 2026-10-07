@@ -6,6 +6,7 @@ import { createJsonLdGraph } from '@/lib/createJsonLdGraph';
 
 // Components
 import JsonLDScript from '@/components/JsonLDScript';
+import TestimonialsList from '@/components/TestimonialList';
 
 import type { Metadata } from 'next';
 export const metadata: Metadata = buildMetadata({
@@ -35,65 +36,26 @@ import rawData from '@/data/testimonials.json';
 const testimonialsData = rawData as TestimonialsJSON;
 const order = testimonialsData._order;
 
-const bgColors = [
-    'bg-blue-50 dark:bg-blue-900',
-    'bg-green-50 dark:bg-green-900',
-    'bg-yellow-50 dark:bg-yellow-900',
-    'bg-purple-50 dark:bg-purple-900',
-    'bg-pink-50 dark:bg-pink-900',
-    'bg-gray-100 dark:bg-gray-800',
-    'bg-indigo-50 dark:bg-indigo-900',
-];
-
-const getRandomArrayElement = <T,>(array: T[]): T => array[Math.floor(Math.random() * array.length)];
-const shuffle = <T,>(array: T[]): T[]  => {
-    let currentIdx = array.length;
-    while (currentIdx !== 0) {
-        const randomIdx = Math.floor(Math.random()*currentIdx);
-        currentIdx--;
-        // Swap the current index with the randomly selected one
-        [array[currentIdx], array[randomIdx]] = [array[randomIdx], array[currentIdx]];
-    }
-    return array;
-};
-
-const TestimonialListItem = ({ testimonial, name }: SingleTestimonial) => {
-
-    //const { testimonial, name } = testimonialObj;
-    return (
-        <blockquote
-            className={`p-4 rounded shadow-md ${getRandomArrayElement(bgColors)} transition duration-300 ease-in-out`}
-        >
-            <p className="italic text-lg">“{testimonial}”</p>
-            <span className="block text-right font-semibold mt-2">— {name}</span>
-        </blockquote>
-    )
-
-}
-
 export default function Testimonials() {
     const baseUrl = getBaseUrl();
     const jsonLd = createJsonLdGraph(baseUrl, metadata);
-    const shuffledOrder = shuffle([...order]);
+
+    const testimonials = order.flatMap((year) => {
+        const data = testimonialsData[year];
+        if (!data || !("testimonials" in data)) return [];
+        return data.testimonials;
+    });
+
     return (
         <>
             <JsonLDScript data={jsonLd} />
+
             <div className="max-w-5xl mx-auto px-6 py-12 space-y-16 text-gray-800 dark:text-gray-100">
                 <h1 className="text-3xl font-bold text-blue-700 dark:text-blue-400 text-center">
                     Testimonials
                 </h1>
 
-                {shuffledOrder.map((year) => {
-                    const data = testimonialsData[year];
-                    // TODO: Set a message in case there's an error. Can I do this without useState?
-                    if (!data || !('testimonials' in data)) return null;
-                    const testimonials = shuffle([...data.testimonials]);
-                    return (
-                        testimonials.map(
-                            ({ testimonial, name }, idx) => <TestimonialListItem key={idx} testimonial={testimonial} name={name} />
-                        )
-                    );
-                })}
+                <TestimonialsList testimonials={testimonials} />
             </div>
         </>
     );
